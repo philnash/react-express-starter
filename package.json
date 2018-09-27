@@ -12,5 +12,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "node-env-run": "^3.0.2",
+    "nodemon": "^1.18.4",
+    "npm-run-all": "^4.1.3"
   }
 }
