@@ -33,3 +33,7 @@ npm run dev
 ```
 
 The React application will run on port 3000 and the server port 3001.
+
+## React Twilio starter
+
+The [twilio branch](./tree/twilio) is a similar setup but also provides endpoints with basic [Access Tokens](https://www.twilio.com/docs/iam/access-tokens) for [Twilio Programmable Chat](https://www.twilio.com/docs/chat) and [Twilio Programmable Video](https://www.twilio.com/docs/video). You can use the project as a base for building React chat or video applications.
