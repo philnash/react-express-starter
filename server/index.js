@@ -25,14 +25,12 @@ app.get('/api/greeting', (req, res) => {
 });
 
 app.get('/chat/token', (req, res) => {
-  console.log(req.query);
   const identity = req.query.identity;
   const token = chatToken(identity, config);
   sendTokenResponse(token, res);
 });
 
 app.post('/chat/token', (req, res) => {
-  console.log(req.body);
   const identity = req.body.identity;
   const token = chatToken(identity, config);
   sendTokenResponse(token, res);
