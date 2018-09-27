@@ -1,17 +1,22 @@
 const config = require('./config');
 const express = require('express');
 const bodyParser = require('body-parser');
-<<<<<<< HEAD
 const pino = require('express-pino-logger')();
-=======
-const twilio = require('twilio');
-const AccessToken = twilio.jwt.AccessToken;
-const { ChatGrant, VideoGrant } = AccessToken;
->>>>>>> Adds basic chat and video token retrieval
+const { chatToken, videoToken } = require('./tokens');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(pino);
+
+const sendTokenResponse = (token, res) => {
+  res.set('Content-Type', 'application/json');
+  res.send(
+    JSON.stringify({
+      token: token.toJwt()
+    })
+  );
+};
 
 app.get('/api/greeting', (req, res) => {
   const name = req.query.name || 'World';
@@ -20,47 +25,31 @@ app.get('/api/greeting', (req, res) => {
 });
 
 app.get('/chat/token', (req, res) => {
+  console.log(req.query);
   const identity = req.query.identity;
-  const chatGrant = new ChatGrant({
-    serviceSid: config.twilio.chatService
-  });
-  const token = new AccessToken(
-    config.twilio.accountSid,
-    config.twilio.apiKey,
-    config.twilio.apiSecret
-  );
-  token.addGrant(chatGrant);
-  token.identity = identity;
-  res.set('Content-Type', 'application/json');
-  res.send(
-    JSON.stringify({
-      token: token.toJwt()
-    })
-  );
+  const token = chatToken(identity, config);
+  sendTokenResponse(token, res);
+});
+
+app.post('/chat/token', (req, res) => {
+  console.log(req.body);
+  const identity = req.body.identity;
+  const token = chatToken(identity, config);
+  sendTokenResponse(token, res);
 });
 
 app.get('/video/token', (req, res) => {
   const identity = req.query.identity;
   const room = req.query.room;
-  let videoGrant;
-  if (typeof room !== 'undefined') {
-    videoGrant = new VideoGrant({ room });
-  } else {
-    videoGrant = new VideoGrant();
-  }
-  const token = new AccessToken(
-    config.twilio.accountSid,
-    config.twilio.apiKey,
-    config.twilio.apiSecret
-  );
-  token.addGrant(videoGrant);
-  token.identity = identity;
-  res.set('Content-Type', 'application/json');
-  res.send(
-    JSON.stringify({
-      token: token.toJwt()
-    })
-  );
+  const token = videoToken(identity, room, config);
+  sendTokenResponse(token, res);
+});
+
+app.post('/video/token', (req, res) => {
+  const identity = req.body.identity;
+  const room = req.body.room;
+  const token = videoToken(identity, room, config);
+  sendTokenResponse(token, res);
 });
 
 app.listen(3001, () =>
