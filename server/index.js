@@ -2,7 +2,7 @@ const config = require('./config');
 const express = require('express');
 const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
-const { chatToken, videoToken } = require('./tokens');
+const { chatToken, videoToken, voiceToken } = require('./tokens');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -47,6 +47,18 @@ app.post('/video/token', (req, res) => {
   const identity = req.body.identity;
   const room = req.body.room;
   const token = videoToken(identity, room, config);
+  sendTokenResponse(token, res);
+});
+
+app.get('/voice/token', (req, res) => {
+  const identity = req.body.identity;
+  const token = voiceToken(identity, config);
+  sendTokenResponse(token, res);
+});
+
+app.post('/voice/token', (req, res) => {
+  const identity = req.body.identity;
+  const token = voiceToken(identity, config);
   sendTokenResponse(token, res);
 });
 

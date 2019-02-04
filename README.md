@@ -36,14 +36,9 @@ npm run dev
 
 The React application will run on port 3000 and the server port 3001.
 
-<<<<<<< HEAD
-## React Twilio starter
-
-The [twilio branch](https://github.com/philnash/react-express-starter/tree/twilio) is a similar setup but also provides endpoints with basic [Access Tokens](https://www.twilio.com/docs/iam/access-tokens) for [Twilio Programmable Chat](https://www.twilio.com/docs/chat) and [Twilio Programmable Video](https://www.twilio.com/docs/video). You can use the project as a base for building React chat or video applications.
-=======
 ## Access token endpoints
 
-There are two access token endpoints available via `GET` or `POST`. In all cases the token will be returned as a JSON response with one key: "token".
+There are three access token endpoints available via `GET` or `POST`. In all cases the token will be returned as a JSON response with one key: "token".
 
 ### Chat
 
@@ -142,4 +137,47 @@ fetch('/video/token', {
     console.log(data.token);
   });
 ```
->>>>>>> Add endpoints for generating Twilio chat and video tokens.
+
+### Voice
+
+You can get a voice token by making a `GET` request to `/voice/token` passing an identity as a query parameter.
+
+e.g.
+
+```javascript
+fetch('/voice/token?identity=philnash')
+  .then(res => res.json())
+  .then(data => {
+    console.log(data.token);
+  });
+```
+
+You can also get a voice token by making a `POST` request to `/voice/token` passing the identity as a body parameter or as JSON.
+
+e.g.
+
+```javascript
+// Form encoded
+fetch('/voice/token', {
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  method: 'POST',
+  body: 'identity=philnash'
+})
+  .then(res => res.json())
+  .then(data => {
+    console.log(data.token);
+  });
+```
+
+```javascript
+// JSON encoded
+fetch('/voice/token', {
+  headers: { 'Content-Type': 'application/json' },
+  method: 'POST',
+  body: JSON.stringify({ identity: 'philnash' })
+})
+  .then(res => res.json())
+  .then(data => {
+    console.log(data.token);
+  });
+```
