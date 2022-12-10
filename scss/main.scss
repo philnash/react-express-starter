@@ -13,6 +13,7 @@ h1, h2, h3 {
     font-weight: 700;
 }
 
+// Target all the links globally
 a {
     color:set-text-color($primary-color);
     text-decoration: none;
@@ -38,7 +39,7 @@ main {
         bottom: 1rem;
         left:1rem;
         
-
+// Target only the links in the parent main
         a {
             padding: 0.4rem;
             @include transition-ease;
