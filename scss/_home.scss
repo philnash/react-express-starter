@@ -1,0 +1,28 @@
+.home {
+    height: 100%;
+    padding-top: 40vh;
+    overflow: hidden;
+    align-items: center;
+    text-align: center;
+    background: 
+        linear-gradient(
+            to right,
+            rgba($primary-color, 0.9),
+            rgba($primary-color, 0.3)
+        ),
+
+    url('../flame.png') center top;
+    background-size: cover;
+
+&__name {
+    font-size: 5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid set-text-color($primary-color);
+
+    &--last {
+        color: $secondary-color;
+        font-weight: 800 ;
+    }
+}
+}
