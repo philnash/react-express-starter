@@ -1,6 +1,7 @@
 .home {
     height: 100%;
-    padding-top: 40vh;
+    // (40% of the available viewport height)
+    padding-top: 40vh; 
     overflow: hidden;
     align-items: center;
     text-align: center;
