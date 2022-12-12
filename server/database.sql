@@ -19,7 +19,7 @@ CREATE TABLE Inventory(
     Price INTEGER NOT NULL
 );
 
-CREATE TABLE Shipping_Address(
+CREATE TABLE Shipping_Addresses(
     UserID FOREIGN KEY,
     FullName VARCHAR(255) NOT NULL,
     Country VARCHAR(255) NOT NULL,

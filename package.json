@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "cli": "^1.0.1",
+    "pg": "^8.8.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "sequelize": "^6.26.0"
   },
   "scripts": {
     "start": "react-scripts start",
