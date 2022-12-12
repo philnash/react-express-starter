@@ -14,7 +14,7 @@ var JWTSign = function (user, date) {
     export default {
         //addUser
         async addUser(req, res, next) {
-            const { firstName, lastName, phoneNo, email, address, password, role, verify } = req.body;
+            const { firstName, lastName, email, streetaddress, password,  } = req.body;
             var passwordHash = bcrypt.hashSync(password);
             db.user.findOne({ where: { email: email }, paranoid: false })
                 .then(find => {
@@ -25,11 +25,8 @@ var JWTSign = function (user, date) {
                         firstName: firstName,
                         lastName: lastName,
                         email: email,
-                        phoneNo: phoneNo,
-                        address: address,
+                        steetaddress: streetaddress,
                         password: passwordHash,
-                        verify: verify,
-                        role: role
                     })
 
                 })
@@ -64,7 +61,7 @@ var JWTSign = function (user, date) {
 
         //Update user info
         async userUpdate(req, res, next) {
-            const { id, firstName, lastName, email, address, password, role, verify } = req.body;
+            const { id, firstName, lastName, email, streetaddress, password, } = req.body;
             var passwordHash = bcrypt.hashSync(password);
             db.user.findOne({ where: { email: email }, paranoid: false })
                 .then(user => {
@@ -74,10 +71,8 @@ var JWTSign = function (user, date) {
                     return db.user.update({
                         firstName: firstName ? firstName : user.firstName,
                         lastName: lastName ? lastName : user.lastName,
-                        password: password ? passwordHash : user.passwordHash,
-                        address: address ? address : user.address,
-                        role: role ? role : user.role,
-                        verify: verify ? verify : user.verify
+                        userpassword: userpassword ? passwordHash : user.passwordHash,
+                        streetaddress: streetaddress ? streetaddress : user.streetaddress,
                     }, { where: { id: id } })
 
                 })
