@@ -1,7 +1,7 @@
 CREATE DATABASE firestarter;
 
 CREATE TABLE user(
-    userid SERIAL=500 PRIMARY KEY,
+    userid INT SERIAL=500 PRIMARY KEY,
     shipid FOREIGN KEY,  
     paymentmethodid FOREIGN KEY,
     orderid FOREIGN KEY,
@@ -50,8 +50,8 @@ CREATE TABLE payment_method(
     paymentmethodid SERIAL PRIMARY KEY,
     orderid FOREIGN KEY,
     userid FOREIGN KEY,
+    nameoncard VARCHAR(100),
     cardnumber INT(25),
-    nameoncard VARCHAR(25),
     expirationdate DATE,
     securitycode VARCHAR (25),
     nameofcard VARCHAR(25),
@@ -92,9 +92,9 @@ CREATE TABLE billing(
     billingcity VARCHAR(100),
     billingstate VARCHAR(25),
     billingzipcode INT,
-    ccnumber INT,
-    ccexpiration INT,
-    ccsecuritycode INT,
+    -- ccnumber INT, these values are already stored under payment_method
+    -- ccexpiration INT,
+    -- ccsecuritycode INT,
     CONSTRAINT fk_userid FOREIGN KEY (userid) REFERENCES user(userid),
     CONSTRAINT fk_orderid FOREIGN KEY (orderid) REFERENCES order(orderid),
 );
