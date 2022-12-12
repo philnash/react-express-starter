@@ -1,8 +1,8 @@
 'use strict';
 const {
-  Model
+  Model, DATE
 } = require('sequelize');
-const inventory = require('./inventory');
+const inventory = require('./Inventory');
 module.exports = (sequelize, DataTypes) => {
   class Orders extends Model {
 
@@ -15,20 +15,21 @@ module.exports = (sequelize, DataTypes) => {
 
   };
   Orders.init({
-    orders_Id: {
+    OrderID: {
       type: DataTypes.SMALLINT,
       primaryKey: true,
       autoIncrement: true
 
     },
-    user_id: DataTypes.SMALLINT,
-    product_id: DataTypes.SMALLINT,
-    quantityPurchased: DataTypes.SMALLINT,
-    orderSubtotal: DataTypes.SMALLINT,
-    shippingCost: DataTypes.SMALLINT,
-    orderTax: DataTypes.SMALLINT,
-    orderTotal: DataTypes.SMALLINT,
-    orderStatus: DataTypes.STRING
+    UserID: DataTypes.SMALLINT,
+    ProductID: DataTypes.SMALLINT,
+    QuantityPurchased: DataTypes.SMALLINT,
+    OrderSubtotal: DataTypes.SMALLINT,
+    ShippingCost: DataTypes.SMALLINT,
+    OrderTax: DataTypes.SMALLINT,
+    OrderTotal: DataTypes.SMALLINT,
+    Shipped: DataTypes.BOOLEAN, 
+    ExpDeliveryDate: DataTypes.DATE,
   }, {
     sequelize,
     underscored: true,
