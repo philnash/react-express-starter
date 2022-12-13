@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
-// import logo from './logo.svg';
-import './App.css';
-
+import React, { Component } from "react";
+import "./App.css";
+import { Navbar } from "react-bootstrap";
+import NavBar from "./components/Navbar";
+import { Router, Routes, Route } from "react-router-dom";
+import * as serviceWorker from "./serviceWorker";
 
 
 class App extends Component {
