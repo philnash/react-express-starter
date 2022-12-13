@@ -1,12 +1,3 @@
-<<<<<<< Updated upstream
-import * as React from "react";
-import { Component } from 'react';
-import logo from '../src/flame.png';
-// import './App.css';
-
-// I NEED TO IMPORT PUBLIC/CSS/main.css HERE since SASS is updating that right now, App.css is not auto-updating at this time. 
-
-=======
 import * as React from "react";
 import { Component } from "react";
 import "./App.css";
@@ -19,7 +10,6 @@ import OrderConfirmationPage from "./pages/OrderConfirmationPage"
 
 import { BrowserRouter, Route, Routes, Router, Switch } from 'react-router-dom'
 import * as serviceWorker from "./serviceWorker";
->>>>>>> Stashed changes
 
 
 class App extends Component {
