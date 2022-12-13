@@ -6,12 +6,14 @@ CREATE TABLE user(
     paymentmethodid FOREIGN KEY,
     orderid FOREIGN KEY,
     billingid FOREIGN KEY,
+
     userrole VARCHAR(25),
     username VARCHAR(50),
     firstname VARCHAR(50),
     lastname VARCHAR (50),
     email VARCHAR(100),
     password TEXT, 
+
     CONSTRAINT fk_shipid FOREIGN KEY (shipid) REFERENCES shipping_address(shipid)
     CONSTRAINT fk_paymentmethodid FOREIGN KEY (paymentmethodid) REFERENCES payment_method(paymentmethodid)
     CONSTRAINT fk_orderid FOREIGN KEY (orderid) REFERENCES order(orderid),
@@ -19,13 +21,15 @@ CREATE TABLE user(
 );  
 
 CREATE TABLE inventory(
-    productid SERIAL=1000 PRIMARY KEY,
+    productid INTEGER PRIMARY KEY,
     orderid FOREIGN KEY,
+
     productname VARCHAR(100) UNIQUE NOT NULL,
     productdescription VARCHAR(500),
-    qtyinstock INT DEFAULT=0,
+    qtyinstock INTEGER DEFAULT=0,
     productimage IMAGE,
     price MONEY DEFAULT=0, 
+
     CONSTRAINT fk_orderid FOREIGN KEY (orderid) REFERENCES order(orderid)
 );
 
@@ -33,6 +37,7 @@ CREATE TABLE shipping_address(
     shipid PRIMARY KEY,
     userid FOREIGN KEY,
     orderid FOREIGN KEY,
+    
     fullname VARCHAR(255) NOT NULL,
     country VARCHAR(255) NOT NULL,
     streetaddress VARCHAR(25) NOT NULL,
@@ -41,7 +46,7 @@ CREATE TABLE shipping_address(
     shipstate VARCHAR(25) NOT NULL,
     zipcode INT NOT NULL,
     phone INT(25), 
-    -- CHECK (Country=USA),
+    
     CONSTRAINT fk_user FOREIGN KEY (userid) REFERENCES user(userid),
     CONSTRAINT fk_orderid FOREIGN KEY (orderid) REFERENCES order(orderid),
 );
@@ -50,11 +55,13 @@ CREATE TABLE payment_method(
     paymentmethodid SERIAL PRIMARY KEY,
     orderid FOREIGN KEY,
     userid FOREIGN KEY,
+    
     nameoncard VARCHAR(100),
     cardnumber INT(25),
     expirationdate DATE,
     securitycode VARCHAR (25),
     nameofcard VARCHAR(25),
+    
     CONSTRAINT fk_userid FOREIGN KEY (userid) REFERENCES user(userid),
     CONSTRAINT fk_orderid FOREIGN KEY (orderid) REFERENCES order(orderid)
 );
@@ -66,6 +73,7 @@ CREATE TABLE order(
     billingid FOREIGN KEY,
     shipid FOREIGN KEY,
     productid FOREIGN KEY,
+
     datecreated TIMESTAMP,
     productname VARCHAR(255),
     quantitypurchased INT,
@@ -75,6 +83,7 @@ CREATE TABLE order(
     ordertotal MONEY,
     shipped BOOLEAN, 
     expdeliverydate DATE, 
+    
     CONSTRAINT fk_userid FOREIGN KEY (userid) REFERENCES user(userid),
     CONSTRAINT fk_paymentmethodid FOREIGN KEY (paymentmethodid) REFERENCES payment_method(paymentmethodid)
     CONSTRAINT fk_billingid FOREIGN KEY (biliingid) REFERENCES billing(billingid)
@@ -86,15 +95,14 @@ CREATE TABLE billing(
     billingid PRIMARY KEY,
     userid FOREIGN KEY,
     orderid FOREIGN KEY,
+
     billingname VARCHAR(100),
     billingaddress VARCHAR(100),
     billinglinetwo VARCHAR(100),
     billingcity VARCHAR(100),
     billingstate VARCHAR(25),
     billingzipcode INT,
-    -- ccnumber INT, these values are already stored under payment_method
-    -- ccexpiration INT,
-    -- ccsecuritycode INT,
+    
     CONSTRAINT fk_userid FOREIGN KEY (userid) REFERENCES user(userid),
     CONSTRAINT fk_orderid FOREIGN KEY (orderid) REFERENCES order(orderid),
 );
