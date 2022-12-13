@@ -1,7 +1,22 @@
+<<<<<<< Updated upstream
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 
+=======
+import * as React from "react";
+import { Component } from "react";
+import "./App.css";
+// import { Navbar } from "react-bootstrap";
+import Navigation from "./components/Navbar";
+import HomePage from "./pages/HomePage"
+import ProductsPage from "./pages/ProductsPage"
+import ProfilePage from "./pages/ProfilePage"
+import OrderConfirmationPage from "./pages/OrderConfirmationPage"
+
+import { BrowserRouter, Route, Routes, Router, Switch } from 'react-router-dom'
+import * as serviceWorker from "./serviceWorker";
+>>>>>>> Stashed changes
 
 
 class App extends Component {
@@ -26,6 +41,7 @@ class App extends Component {
       .then(state => this.setState(state));
   }
 
+<<<<<<< Updated upstream
   render() {
     return (
       <div className="App">
@@ -57,6 +73,32 @@ class App extends Component {
       </div>
     );
   }
+=======
+render() {
+  return (
+    <div className="App">
+      <header className="App-header">
+    <BrowserRouter>
+      <Navigation />
+          {" "}
+      <Switch> 
+      <Route exact path="/" component={Home} />
+          <Route exact path="/home" component={HomePage} />
+          <Route exact path="/products" component={ProductsPage} />
+          <Route exact path="/profile" component={ProfilePage} />
+          <Route exact path="/ordercomplete" component={OrderConfirmationPage} />
+          <Route exact path="/checkout" component={CheckoutPage} />
+          <Route exact path="/product/:productid" component={ProductDetails} />
+
+          <Route exact path="/profile/:userid" component={EditPlaceForm} />
+          <Route path="/" component={Error404} />
+      </Switch>
+        </div>
+      </header>
+    </div>
+  );
+}
+>>>>>>> Stashed changes
 }
 
 export default App;
