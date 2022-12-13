@@ -7,7 +7,9 @@
     "dotenv": "^16.0.3",
     "pg": "^8.8.0",
     "react": "^16.14.0",
+    "react-bootstrap": "^2.7.0",
     "react-dom": "^16.14.0",
+    "react-router-dom": "^6.4.5",
     "react-scripts": "^5.0.1",
     "sequelize": "^6.26.0"
   },
