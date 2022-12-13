@@ -13,9 +13,9 @@ export async function up(queryInterface, Sequelize) {
     },
     {
       userrole: "Admin",
-      username: "theboss",
-      firstname: "Crystals mom",
-      lastname: "her last name",
+      username: "mgarvey",
+      firstname: "Marlene",
+      lastname: "Garvey",
       email: "her@email.com",
       password: "hashed?",
     },
