@@ -34,21 +34,6 @@ class App extends Component {
       .then(state => this.setState(state));
   }
 
-<<<<<<< Updated upstream
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          
-          
-          
-        
-         
-        </header>
-      </div>
-    );
-  }
-=======
 render() {
   return (
     <div className="App">
@@ -68,12 +53,11 @@ render() {
           <Route exact path="/profile/:userid" component={EditPlaceForm} />
           <Route path="/" component={Error404} />
       </Switch>
-        </div>
-      </header>
-    </div>
+    </BrowserRouter>
+    </header>
+  </div>
   );
 }
->>>>>>> Stashed changes
 }
 
 export default App;
