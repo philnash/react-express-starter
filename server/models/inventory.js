@@ -1,32 +1,44 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+import { Model } from "sequelize";
+
+const order = require("./order");
+
 module.exports = (sequelize, DataTypes) => {
-  class Inventory extends Model {
-
-    static associate({  }) {
-        Inventory.hasMany(Orders, { as: 'orders', foreignKey: 'orders_id' })
-      
+  class inventory extends Model {
+    static associate({}) {
+      inventory.hasMany(order, { as: "orderid", foreignKey: "orderid" });
     }
+  }
+  inventory.init(
+    {
+      productid: {
+        type: DataTypes.STRING,
+        primaryKey: true,
+        notEmpty: true,
+      },
+      productname: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      productdescription: DataTypes.STRING,
 
-  };
-  Inventory.init({
-    inventroy_Id: {
-      type: DataTypes.SMALLINT,
-      primaryKey: true,
-      autoIncrement: true
-
+      qtyinstock: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
+      productimage: {
+        type: DataTypes.IMAGE,
+        allowNull: true,
+      },
+      price: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
+      },
     },
-    productName: DataTypes.STRING,
-    quantity: DataTypes.SMALLINT,
-    productDescription: DataTypes.STRING,
-    productImage: DataTypes.STRING,
-    price: DataTypes.SMALLINT
-  }, {
-    sequelize,
-    underscored: true,
-    modelName: 'Inventory',
-  });
-  return Inventory;
+    {
+      sequelize,
+      modelName: "inventory",
+    }
+  );
+  return inventory;
 };

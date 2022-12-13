@@ -3,9 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "^5.2.3",
+    "cli": "^1.0.1",
+    "dotenv": "^16.0.3",
+    "pg": "^8.8.0",
     "react": "^16.14.0",
+    "react-bootstrap": "^2.7.0",
     "react-dom": "^16.14.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "sequelize": "^6.26.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -32,6 +38,7 @@
     "node-env-run": "^4.0.2",
     "nodemon": "^2.0.20",
     "npm-run-all": "^4.1.5",
-    "pino-colada": "^1.5.1"
+    "pino-colada": "^1.5.1",
+    "sequelize-cli": "^6.5.2"
   }
 }
