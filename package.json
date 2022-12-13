@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "cli": "^1.0.1",
     "cookie": "^0.5.0",
     "dotenv": "^16.0.3",
@@ -10,6 +11,7 @@
     "react": "^16.14.0",
     "react-bootstrap": "^2.7.0",
     "react-dom": "^16.14.0",
+    "react-express": "^0.2.0",
     "react-router-dom": "^6.4.5",
     "react-scripts": "^5.0.1",
     "sequelize": "^6.26.0"
@@ -34,7 +36,7 @@
   ],
   "devDependencies": {
     "body-parser": "^1.19.0",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "express-pino-logger": "^4.0.0",
     "node-env-run": "^4.0.2",
     "nodemon": "^2.0.20",

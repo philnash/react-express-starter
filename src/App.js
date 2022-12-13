@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
+import { Navbar } from "react-bootstrap";
 import NavBar from "./components/Navbar";
-import { Nav, NavLink, Navbar } from "react-bootstrap";
 import { Router, Routes, Route } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 
