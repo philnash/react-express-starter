@@ -4,16 +4,22 @@ import Navigation from "../components/Navbar";
 import Footer from "../components/Footer";
 
 function HomePage() {
-    return (
-      <main>
+  return (
+    <main>
+      <div>
         <h1>HOME PAGE</h1>
-        <Navigation />
-        <Hero />
+        <hr/>
+        <br/>
         <ShoppingCart />
         <Footer />
-      </main>
-    );
-  }
-  
-  export default HomePage;
-  
+      </div>
+      <div>
+        <aside>
+          <Hero />
+        </aside>
+      </div>
+    </main>
+  );
+}
+
+export default HomePage;

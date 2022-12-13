@@ -2,11 +2,13 @@ import * as React from "react";
 import { Component } from "react";
 // import "./App.css";
 import Navigation from "./components/Navbar";
+import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
 import ProfilePage from "./pages/ProfilePage";
 import OrderConfirmationPage from "./pages/OrderConfirmationPage";
 import CheckoutPage from "./pages/CheckoutPage";
+import AboutUsPage from "./pages/AboutUsPage";
 import Error404 from "./Error404";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -41,18 +43,18 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
+          <Navigation />
+          <br />
+          <hr/>
           <BrowserRouter>
-            <Navigation /> {/* <Switch>  */}
+            {/* <Switch>  */}
             <Routes>
               <Route exact path="/" element={<HomePage />} />
               <Route exact path="/home" element={<HomePage />} />
               <Route exact path="/products" element={<ProductsPage />} />
+              <Route exact path="/aboutus" element={<AboutUsPage />} />
               <Route exact path="/profile" element={<ProfilePage />} />
-              <Route
-                exact
-                path="/ordercomplete"
-                element={<OrderConfirmationPage />}
-              />
+              <Route exact path="/ordercomplete" element={<OrderConfirmationPage />} />
               <Route exact path="/checkout" element={<CheckoutPage />} />
               {/* <Route exact path="/product/:productid" element={<ProductDetails />}/> */}
               <Route exact path="/profile/:userid" element={<ProfilePage />} />
@@ -60,6 +62,8 @@ class App extends Component {
               {/* </Switch> */}
             </Routes>
           </BrowserRouter>
+          <br/>
+          <Footer />
         </header>
       </div>
     );

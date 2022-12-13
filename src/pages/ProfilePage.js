@@ -1,10 +1,15 @@
 function ProfilePage() {
-    return (
+  return (
+    <div>
       <main>
         <h1>ProfilePage</h1>
+        <br/>
       </main>
-    );
-  }
-  
-  export default ProfilePage;
-  
+      <button>Log In</button>
+      <p>or</p>
+      <button>Create User</button>
+    </div>
+  );
+}
+
+export default ProfilePage;
