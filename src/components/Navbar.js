@@ -7,16 +7,16 @@ function Navigation(){
     <div>
       <Nav>
         <Navbar>
-          <NavLink to="./pages/home" activeStyle>
+          <NavLink to="./pages/home">
             Home
           </NavLink>
-          <NavLink to="./pages/products" activeStyle>
+          <NavLink to="./pages/products">
             Products
           </NavLink>
-          <NavLink to="./pages/about_us" activeStyle>
+          <NavLink to="./pages/about_us">
             About Us
           </NavLink>
-          <NavLink to="./pages/login" activeStyle>
+          <NavLink to="./pages/login">
              Login
           </NavLink>
         </Navbar>

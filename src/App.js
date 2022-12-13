@@ -9,7 +9,7 @@ import OrderConfirmationPage from "./pages/OrderConfirmationPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import Error404 from "./Error404";
 
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // import CurrentUserProvider from './contexts/CurrentUser'
 // import * as serviceWorker from "./serviceWorker";
@@ -43,20 +43,22 @@ class App extends Component {
         <header className="App-header">
           <BrowserRouter>
             <Navigation /> {/* <Switch>  */}
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/home" component={HomePage} />
-            <Route exact path="/products" component={ProductsPage} />
-            <Route exact path="/profile" component={ProfilePage} />
-            <Route
-              exact
-              path="/ordercomplete"
-              component={OrderConfirmationPage}
-            />
-            <Route exact path="/checkout" component={CheckoutPage} />
-            {/* <Route exact path="/product/:productid" component={ProductDetails}/> */}
-            <Route exact path="/profile/:userid" component={ProfilePage} />
-            <Route path="/" component={Error404} />
-            {/* </Switch> */}
+            <Routes>
+              <Route exact path="/" element={<HomePage />} />
+              <Route exact path="/home" element={<HomePage />} />
+              <Route exact path="/products" element={<ProductsPage />} />
+              <Route exact path="/profile" element={<ProfilePage />} />
+              <Route
+                exact
+                path="/ordercomplete"
+                element={<OrderConfirmationPage />}
+              />
+              <Route exact path="/checkout" element={<CheckoutPage />} />
+              {/* <Route exact path="/product/:productid" element={<ProductDetails />}/> */}
+              <Route exact path="/profile/:userid" element={<ProfilePage />} />
+              <Route path="/" element={<Error404 />} />
+              {/* </Switch> */}
+            </Routes>
           </BrowserRouter>
         </header>
       </div>
