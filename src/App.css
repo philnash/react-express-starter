@@ -4,22 +4,22 @@
   padding: 0;
 }
 
-.home {
+.app {
   height: 100%;
   padding-top: 40vh;
   overflow: hidden;
   align-items: center;
   text-align: center;
-  background: linear-gradient(to right, rgba(106, 4, 15, 0.9), rgba(106, 4, 15, 0.3)), url("../public/flame.png") center top;
+  background: linear-gradient(to right, rgba(106, 4, 15, 0.9), rgba(106, 4, 15, 0.3)), url("../flame.png") center top;
   background-size: cover;
 }
-.home__name {
+.app__name {
   font-size: 5rem;
   padding: 1rem;
   margin-bottom: 1rem;
   border-bottom: 5px solid #f48c06;
 }
-.home__name--last {
+.app__name--last {
   color: #370617;
   font-weight: 800;
 }
