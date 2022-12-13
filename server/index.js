@@ -3,7 +3,8 @@ const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
 
 //Controllers
-app.use('/api/users', require('./controllers/users'))
+app.use('/api/users', require('./controllers/usersController'))
+app.use('/api/payment', require('./controllers/paymentController'))
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
