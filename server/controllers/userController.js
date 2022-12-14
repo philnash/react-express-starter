@@ -5,11 +5,9 @@ const cookie = require('cookie')
 const { User } = db
 
 
-
-
 //addUser
 router.post('/', async (req, res) => {
-    const { firstName, lastName, email, streetaddress, password, } = req.body;
+    const { username, firstname, lastname, email, password, } = req.body;
     let passwordHash = bcrypt.hashSync(password);
     db.user.findOne({ where: { email: email }, paranoid: false })
         .then(find => {
@@ -17,10 +15,11 @@ router.post('/', async (req, res) => {
                 throw new RequestError('Email is already in use', 409);
             }
             return db.user.create({
-                firstName: firstName,
-                lastName: lastName,
+                userrole: "customer",
+                username: username,
+                firstname: firstname,
+                lastname: lastname,
                 email: email,
-                steetaddress: streetaddress,
                 password: passwordHash,
             })
 
@@ -40,7 +39,7 @@ router.post('/', async (req, res) => {
 
 //Find users
 router.get('/', async (req, res) => {
-    db.user.findOne({ attributes: ["firstName", "lastName"], where: { email: req.query.email }, paranoid: false })
+    db.user.findOne({ attributes: ["username", "firstname", "lastname"], where: { email: req.query.email }, paranoid: false })
         .then(user => {
             if (user) {
                 return res.status(200).json({ success: true, data: user });
@@ -55,9 +54,9 @@ router.get('/', async (req, res) => {
 })
 
 //Update user info
-router.put('/:id', async (req, res) => {
+router.put('/:userid', async (req, res) => {
    
-    const { userId, firstName, lastName, email, streetaddress, password, } = req.body;
+    const { userid, username, firstname, lastname, email, password, } = req.body;
     let passwordHash = bcrypt.hashSync(password);
     db.user.findOne({ where: { email: email }, paranoid: false })
         .then(user => {
@@ -65,16 +64,16 @@ router.put('/:id', async (req, res) => {
                 throw new RequestError('User is not found', 409);
             }
             return db.user.update({
-                firstName: firstName ? firstName : user.firstName,
-                lastName: lastName ? lastName : user.lastName,
-                userpassword: userpassword ? passwordHash : user.passwordHash,
-                streetaddress: streetaddress ? streetaddress : user.streetaddress,
-            }, { where: { userId: userId } })
+                username: username ? username: user.username, 
+                firstname : firstnameirstname ? firstname : user.firstname,
+                lastname: lastname ? lastname : user.lastname,
+                password: password ? passwordHash : user.password,
+            }, { where: { userid: userid } })
 
         })
         .then(user => {
             if (user) {
-                return res.status(200).json({ success: true, msg: "User update successsfully" });
+                return res.status(200).json({ success: true, msg: "User successsfully updated" });
             }
             else
                 res.status(500).json({ 'success': false });
@@ -106,17 +105,17 @@ router.get('/',async (req, res) => {
 })
 
 //Delete user 
-router.delete('/:userId', async (req, res, next) => {
-    const userId = Number(req.params.userId) 
-    db.user.findOne({ where: { userId: userId } })
+router.delete('/:userid', async (req, res, next) => {
+    const userid = Number(req.params.userid) 
+    db.user.findOne({ where: { userid: userid } })
         .then(data => {
             if (data) {
-                return db.user.destroy({ where: { userId: userId} }).then(r => [r, data])
+                return db.user.destroy({ where: { userid: userid} }).then(r => [r, data])
             }
             throw new RequestError('User is not found', 409)
         })
         .then(re => {
-            return res.status(200).json({ 'status': "deleted userlist Seccessfully" });
+            return res.status(200).json({ 'status': "Successfully deleted user" });
         }).catch(err => {
             next(err)
         })
