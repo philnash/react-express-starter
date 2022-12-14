@@ -1,6 +1,5 @@
 import React from "react";
 import { Nav, NavLink, Navbar } from "react-bootstrap";
-
 // export const NavBar = Navbar
 
 function Navigation(){
@@ -8,18 +7,27 @@ function Navigation(){
     <div>
       <Nav>
         <Navbar>
-          <NavLink to="./pages/home">
-            Home
+          <NavLink href="/home" to="./pages/home"><i class="fa-solid fa-house"></i>
           </NavLink>
-          <NavLink to="./pages/products">
+          <NavLink href="/products" to="./pages/products">
             Products
           </NavLink>
-          <NavLink to="./pages/about_us">
-            About Us
+          <NavLink href="/aboutus" to="./pages/about_us">
+            About Us 
           </NavLink>
-          <NavLink to="./pages/login">
+          {/* I added the fontawesome icons for fun. Feel free to remove them or use them */}
+           <NavLink href="/profile"><i class="fa-regular fa-circle-user"></i></NavLink>
+           <button><NavLink href="/login" to="./pages/login">
              Login
-          </NavLink>
+          </NavLink></button>
+          <button><NavLink href="/createuser" to="./pages/createuser">
+            Create an Account
+          </NavLink></button>
+         
+          
+          <NavLink href="/checkout"><i class="fa fa-shopping-cart" aria-hidden="true"></i></NavLink>
+
+         
         </Navbar>
       </Nav>
     </div>
