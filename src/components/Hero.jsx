@@ -1,5 +1,10 @@
-import React from "react";
-
-
-
-export default Hero
+function Hero(){
+    return (
+      <div>
+        <h2> Hero Component </h2>
+      </div>
+    );
+  };
+  
+  export default Hero;
+  
