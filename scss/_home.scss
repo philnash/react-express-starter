@@ -1,7 +1,6 @@
 .home {
     height: 100%;
-    // (40% of the available viewport height)
-    padding-top: 40vh; 
+    padding-top: 40vh;
     overflow: hidden;
     align-items: center;
     text-align: center;
@@ -12,14 +11,14 @@
             rgba($primary-color, 0.3)
         ),
 
-    url('../flame.png') center top;
+    url('./flame.png') center top;
     background-size: cover;
 
 &__name {
     font-size: 5rem;
     padding: 1rem;
     margin-bottom: 1rem;
-    border-bottom: 5px solid set-text-color($primary-color);
+    border-bottom: 2px solid set-text-color($primary-color);
 
     &--last {
         color: $secondary-color;

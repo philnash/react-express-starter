@@ -10,60 +10,18 @@
   overflow: hidden;
   align-items: center;
   text-align: center;
-  background: linear-gradient(to right, rgba(106, 4, 15, 0.9), rgba(106, 4, 15, 0.3)), url("../flame.png") center top;
+  background: linear-gradient(to right, rgba(106, 4, 15, 0.9), rgba(106, 4, 15, 0.3)), url("./flame.png") center top;
   background-size: cover;
 }
 .home__name {
   font-size: 5rem;
   padding: 1rem;
   margin-bottom: 1rem;
-  border-bottom: 5px solid #f48c06;
+  border-bottom: 2px solid #f48c06;
 }
 .home__name--last {
   color: #370617;
   font-weight: 800;
-}
-
-.menu-btn {
-  position: absolute;
-  z-index: 1;
-  right: 1rem;
-  top: 1rem;
-  height: 20px;
-  width: 28px;
-  cursor: pointer;
-  transition: all 0.5s ease-in-out;
-}
-.menu-btn__burger {
-  position: absolute;
-  right: 0;
-  top: 0.5rem;
-  width: 28px;
-  height: 3px;
-  background: #f48c06;
-  transition: all 0.5s ease-in-out;
-}
-.menu-btn__burger::before {
-  content: "";
-  position: absolute;
-  top: -8px;
-  width: 28px;
-  height: 3px;
-  background: #f48c06;
-  transition: all 0.5s ease-in-out;
-}
-.menu-btn__burger::after {
-  content: "";
-  position: absolute;
-  top: 8px;
-  width: 20px;
-  height: 3px;
-  background: #f48c06;
-  transition: all 0.5s ease-in-out;
-}
-.menu-btn__burger.open {
-  transform: rotate(720deg);
-  background: transparent;
 }
 
 body {
