@@ -1,18 +1,18 @@
 CREATE DATABASE firestarter;
 
 CREATE TABLE user(
-    userid INT SERIAL=500 PRIMARY KEY,
-    shipid FOREIGN KEY,  
-    paymentmethodid FOREIGN KEY,
-    orderid FOREIGN KEY,
-    billingid FOREIGN KEY,
-
+    userid INTEGER SERIAL=500 PRIMARY KEY,
     userrole VARCHAR(25),
     username VARCHAR(50),
     firstname VARCHAR(50),
     lastname VARCHAR (50),
     email VARCHAR(100),
     password TEXT, 
+    
+    shipid FOREIGN KEY,  
+    paymentmethodid FOREIGN KEY,
+    orderid FOREIGN KEY,
+    billingid FOREIGN KEY,
 
     CONSTRAINT fk_shipid FOREIGN KEY (shipid) REFERENCES shipping_address(shipid)
     CONSTRAINT fk_paymentmethodid FOREIGN KEY (paymentmethodid) REFERENCES payment_method(paymentmethodid)
@@ -34,7 +34,7 @@ CREATE TABLE inventory(
 );
 
 CREATE TABLE shipping_address(
-    shipid PRIMARY KEY,
+    shipid INTEGER PRIMARY KEY,
     userid FOREIGN KEY,
     orderid FOREIGN KEY,
     
@@ -44,8 +44,8 @@ CREATE TABLE shipping_address(
     addresslinetwo VARCHAR (25),
     city  VARCHAR(25) NOT NULL,
     shipstate VARCHAR(25) NOT NULL,
-    zipcode INT NOT NULL,
-    phone INT(25), 
+    zipcode INTEGER NOT NULL,
+    phone INTEGER(25), 
     
     CONSTRAINT fk_user FOREIGN KEY (userid) REFERENCES user(userid),
     CONSTRAINT fk_orderid FOREIGN KEY (orderid) REFERENCES order(orderid),
@@ -53,36 +53,36 @@ CREATE TABLE shipping_address(
 
 CREATE TABLE payment_method(
     paymentmethodid SERIAL PRIMARY KEY,
-    orderid FOREIGN KEY,
-    userid FOREIGN KEY,
-    
     nameoncard VARCHAR(100),
-    cardnumber INT(25),
+    cardnumber INTEGER(25),
     expirationdate DATE,
     securitycode VARCHAR (25),
     nameofcard VARCHAR(25),
     
+    orderid FOREIGN KEY,
+    userid FOREIGN KEY,
     CONSTRAINT fk_userid FOREIGN KEY (userid) REFERENCES user(userid),
     CONSTRAINT fk_orderid FOREIGN KEY (orderid) REFERENCES order(orderid)
 );
 
 CREATE TABLE order(
-    orderid INT PRIMARY KEY SERIAL=5000,
-    userid FOREIGN KEY,
-    paymentmethodid FOREIGN KEY,
-    billingid FOREIGN KEY,
-    shipid FOREIGN KEY,
-    productid FOREIGN KEY,
+    orderid INTEGER PRIMARY KEY SERIAL=5000,
 
     datecreated TIMESTAMP,
     productname VARCHAR(255),
-    quantitypurchased INT,
+    quantitypurchased INTEGER,
     ordersubtotal MONEY,
     shippingcost MONEY,
     ordertax MONEY,
     ordertotal MONEY,
     shipped BOOLEAN, 
     expdeliverydate DATE, 
+    
+    userid FOREIGN KEY,
+    paymentmethodid FOREIGN KEY,
+    billingid FOREIGN KEY,
+    shipid FOREIGN KEY,
+    productid FOREIGN KEY,
     
     CONSTRAINT fk_userid FOREIGN KEY (userid) REFERENCES user(userid),
     CONSTRAINT fk_paymentmethodid FOREIGN KEY (paymentmethodid) REFERENCES payment_method(paymentmethodid)
@@ -101,7 +101,7 @@ CREATE TABLE billing(
     billinglinetwo VARCHAR(100),
     billingcity VARCHAR(100),
     billingstate VARCHAR(25),
-    billingzipcode INT,
+    billingzipcode INTEGER,
     
     CONSTRAINT fk_userid FOREIGN KEY (userid) REFERENCES user(userid),
     CONSTRAINT fk_orderid FOREIGN KEY (orderid) REFERENCES order(orderid),

@@ -3,17 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "bootstrap": "^5.2.3",
     "cli": "^1.0.1",
     "contexts": "^0.0.0",
+    "cookie": "^0.5.0",
+    "db": "^3.4.0",
     "dotenv": "^16.0.3",
+    "json-web-token": "^3.2.0",
     "pg": "^8.8.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.7.0",
-    "react-dom": "^17.0.2",
-    "react-refresh": "^0.14.0",
-    "react-router": "^6.4.5",
-    "react-router-dom": "^6.4.5",
+    "react-dom": "^16.14.0",
     "react-scripts": "^5.0.1",
     "sequelize": "^6.26.0"
   },
@@ -25,7 +26,7 @@
     "server": "node-env-run server --exec nodemon | pino-colada",
     "dev": "run-p server start"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "http://localhost:5432",
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -37,7 +38,7 @@
   ],
   "devDependencies": {
     "body-parser": "^1.19.0",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "express-pino-logger": "^4.0.0",
     "node-env-run": "^4.0.2",
     "nodemon": "^2.0.20",
