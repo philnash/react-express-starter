@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Component } from "react";
 // import "./App.css";
+import "../src/css/main.css"
+
 import Navigation from "./components/Navbar";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
