@@ -1,14 +1,18 @@
-import bcrypt from 'bcrypt-nodejs';
-import { db } from '../models'
 const router = require('express').Router()
-const cookie = require('cookie')
-const { User } = db
 
+const { hashSync } = require ('bcrypt')
+// const bcrypt = require ('bcrypt')
+const { db } = require('../index')
+// const cookie = require('cookie')
+// const { User } = db
 
 //addUser
 router.post('/', async (req, res) => {
     const { username, firstname, lastname, email, password, } = req.body;
     let passwordHash = bcrypt.hashSync(password);
+    const { firstName, lastName, email, streetaddress, password, } = req.body;
+    let passwordHash = hashSync(password);
+    console.log({passwordHash})
     db.user.findOne({ where: { email: email }, paranoid: false })
         .then(find => {
             if (find) {
@@ -37,6 +41,13 @@ router.post('/', async (req, res) => {
         })
 })
 
+router.get('/health', async(req, res)=> {
+    return {
+        statusCode:200, 
+        message: "server is healthy"
+    }
+})
+
 //Find users
 router.get('/', async (req, res) => {
     db.user.findOne({ attributes: ["username", "firstname", "lastname"], where: { email: req.query.email }, paranoid: false })
@@ -56,8 +67,8 @@ router.get('/', async (req, res) => {
 //Update user info
 router.put('/:userid', async (req, res) => {
    
-    const { userid, username, firstname, lastname, email, password, } = req.body;
-    let passwordHash = bcrypt.hashSync(password);
+    const { userId, firstName, lastName, email, streetaddress, password, } = req.body;
+    let passwordHash = hashSync(password);
     db.user.findOne({ where: { email: email }, paranoid: false })
         .then(user => {
             if (!user) {
