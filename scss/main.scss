@@ -1,6 +1,7 @@
-@import 'config';
-@import 'home';
-// @import 'menu';
+@import './config';
+@import './home';
+@import './menu';
+@import './navbar';
 
 body {
     background: $primary-color;
