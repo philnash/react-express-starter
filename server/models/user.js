@@ -1,12 +1,12 @@
 "use strict";
-import { Model } from "sequelize";
+const { Model } = require ("sequelize");
 
 const order = require("./order");
 const shipping_address = require("./shipping_address");
 const billing = require("./billing");
 const payment_method = require("./payment_method");
 
-export default (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
   class user extends Model {
     static associate({ order, shipping_address, payment_method, billing }) {
       user.hasMany(shipping_address, { as: "shipid", foreignKey: "shipid" });
@@ -21,7 +21,7 @@ export default (sequelize, DataTypes) => {
 
   user.init({
       userid: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         primaryKey: true,
         autoIncrement: true
       },
