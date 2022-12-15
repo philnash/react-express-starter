@@ -1,5 +1,5 @@
-// "use strict";
-// require("dotenv").config();
+"use strict";
+require("dotenv").config();
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -32,7 +32,7 @@ module.exports = {
   ]);
 
   const [user] = await queryInterface.sequelize.query(
-    `SELECT userid from user LIMIT 1;`
+    `SELECT userid from users LIMIT 1;`
   );
 
   await queryInterface.bulkInsert("inventory", [
@@ -42,54 +42,47 @@ module.exports = {
       qtyinstock: 0,
     //   productimage: ,
       price: 1.50,
+      city: "Seattle",
+      state: "WA",
+      cuisines: "Thai, Pan-Asian",
+      pic: `http://localhost:${process.env.PORT}/images/h-thai-ml-tables.jpg`,
+      founded: 1989,
+      created_at: new Date(),
+      updated_at: new Date(),
     },
     {
-      productid: 2,
-      productdescription: "The next description goes here", 
-      qtyinstock: 0,
-    //   productimage: ,
-      price: 20,
+      name: "Coding Cat Cafe",
+      city: "Phoenix",
+      state: "AZ",
+      cuisines: "Coffee, Bakery",
+      pic: `http://localhost:${process.env.PORT}/images/coffee-cat.png`,
+      founded: 2020,
+      created_at: new Date(),
+      updated_at: new Date(),
     },
   ]);
-  const [inventory] = await queryInterface.sequelize.query(
-    `SELECT productid from inventory LIMIT 1;`
+
+  const [places] = await queryInterface.sequelize.query(
+    `SELECT place_id from places LIMIT 1;`
   );
 
-
-  await queryInterface.bulkInsert("shipping_address", [
+  await queryInterface.bulkInsert("comments", [
     {
-      shipid: 1,
-      userid: 501,
-      fullname: "shipping fullname",
-      country: "USA", 
-      streetaddress: "1234 address",
-      addresslinetwo: "apt 1",
-      city: "ship city",
-      shipstate: "Wisconsin",
-      zipcode: 55555,
-      phone: 5551112222,
-    },
-    {
-      shipid: 2,
-      userid: 501,
-      fullname: "2shipping fullname",
-      country: "USA", 
-      streetaddress: "1234 address",
-      addresslinetwo: "apt 2",
-      city: "ship city2",
-      shipstate: "Wisconsin",
-      zipcode: 55555,
-      phone: 5551112222,
+      place_id: places[0].place_id,
+      author_id: users[0].user_id,
+      rant: false,
+      stars: 5.0,
+      content:
+        "Wow, simply amazing food here. I highly recommend this to anyone visiting the area!",
+      created_at: new Date(),
+      updated_at: new Date(),
     },
   ]);
-
-const [shipping_address] = await queryInterface.sequelize.query(
-  `SELECT shipid from shipping_address LIMIT 1;`
-);
 },
+
 down: async (queryInterface, Sequelize) => {
   await queryInterface.bulkDelete("user", null, {});
   await queryInterface.bulkDelete("inventory", null, {});
   await queryInterface.bulkDelete("shipping_address", null, {});
-},
+}
 }

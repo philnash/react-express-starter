@@ -18,13 +18,14 @@ The node modules and package-lock.json files are created and stored locally when
 ### To get started locally, follow these instructions. Also, each time you begin coding, please make sure you follow these steps to ensure you have the most up to date code. 
 1. Each time you start coding, you need to visit our github repository first and go to pull requests. https://github.com/defworm/Firestarter/pulls  Check if there are any new pull requests that need to be reviewed. If so, review the request and merge with the "Development" branch - not the main branch. 
 2.  In your terminal (VS Code), use the command "git pull origin development" to pull the most recent updates into your terminal. 
-3. Run npm i to install the package-lock.json and node_modules. ***Make sure you run this command in the Client and Server each time you pull new code in case there are new dependencies/node modules that need to be installed.
-5. Open PGAdmin on your desktop and create a new database named firestarter.
-6. Create a .env file. Add this information to your .env file:
+3.  cd into Server and run npm i to install the package-lock.json and node_modules. 
+4. Open a second terminal. cd into Client and run npm i to install the package-lock.json and node_modules. Make sure you run this command in the Client and Server each time you pull new code in case there are new dependencies/node modules that need to be installed.
+5. Open your PGAdmin and create a new database named firestarter.
+6. Create a .env file in the Client folder. Add this information to your .env file:
         PORT=3000
         REACT_APP_SERVER_URL=http://localhost:3000/
-7.  Create a .env file in the server folder. Add this information to your .env file:
-        PORT=5432
+7.  Create a .env file in the Server folder. Add this information to your .env file:
+        PORT=5000
         PG_URI= 'paste your link here'
         DB_USERNAME='enter your username here, typically it is postgres'
         DB_PASSWORD='enter your password here'
@@ -45,6 +46,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 In the project directory, you can run:
+
 ### `npm start`
 
 Runs the app in the development mode.\
@@ -77,12 +79,6 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Sources
-Documentation for BCrypt https://www.npmjs.com/package/bcrypt 
-Documentation for Sequelize CLI https://github.com/sequelize/cli
-
-
 
 ## Learn More
 
