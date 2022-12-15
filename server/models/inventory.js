@@ -1,12 +1,12 @@
 "use strict";
-import { Model } from "sequelize";
+const { Model } = require ("sequelize");
 
 const order = require("./order");
 
 module.exports = (sequelize, DataTypes) => {
   class inventory extends Model {
-    static associate({}) {
-      inventory.hasMany(order, { as: "orderid", foreignKey: "orderid" });
+    static associate({order}) {
+      inventory.hasMany(order, { as: "orderid", foreignKey: "orderId" });
     }
   }
   inventory.init(
@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         primaryKey: true,
         notEmpty: true,
+      },
+      orderId: {
+        type: DataTypes.STRING,
+        foreignKey: true,
       },
       productname: {
         type: DataTypes.STRING,
@@ -27,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: 0,
       },
       productimage: {
-        type: DataTypes.IMAGE,
+        type: DataTypes.STRING,
         allowNull: true,
       },
       price: {

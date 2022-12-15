@@ -1,5 +1,5 @@
 "use strict";
-import { Model } from "sequelize";
+const { Model } = require ("sequelize");
 
 const order = require("./order");
 const user = require("./user");
@@ -8,11 +8,11 @@ const payment_method = require("./payment_method");
 module.exports = (sequelize, DataTypes) => {
   class billing extends Model {
     static associate({ order, user, payment_method }) {
-      billing.belongsTo(user, { as: "userid", foreignKey: "userid" });
-      billing.hasMany(order, { as: "orderid", foreignKey: "orderid" });
+      billing.belongsTo(user, { as: "userid", foreignKey: "userId" });
+      billing.hasMany(order, { as: "orderid", foreignKey: "orderId" });
       billing.hasMany(payment_method, {
         as: "paymentmethodid",
-        foreignKey: "paymentmethodid",
+        foreignKey: "paymentmethodId",
       });
     }
   }
@@ -20,16 +20,16 @@ module.exports = (sequelize, DataTypes) => {
   billing.init(
     {
       bilingid: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         primaryKey: true,
         autoIncrement: true
       },
-      userid: {
-        type: DataTypes.INTEGER,
+      userId: {
+        type: DataTypes.STRING,
         foreignKey: true
       },
-      orderid: {
-        type: DataTypes.INTEGER,
+      orderId: {
+        type: DataTypes.STRING,
         foreignKey: true
       },
       billingname: {
@@ -47,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       billingzipcode: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         isNumeric: true,
         allowNull: false,
       },
