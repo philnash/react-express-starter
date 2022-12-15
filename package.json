@@ -6,15 +6,21 @@
     "bcrypt": "^5.1.0",
     "bootstrap": "^5.2.3",
     "cli": "^1.0.1",
+    "config": "^3.3.8",
     "contexts": "^0.0.0",
     "cookie": "^0.5.0",
+    "cors": "^2.8.5",
     "db": "^3.4.0",
     "dotenv": "^16.0.3",
-    "json-web-token": "^3.2.0",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
     "pg": "^8.8.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.7.0",
-    "react-dom": "^16.14.0",
+    "react-dom": "^17.0.2",
+    "react-refresh": "^0.14.0",
+    "react-router": "^6.4.5",
+    "react-router-dom": "^6.4.5",
     "react-scripts": "^5.0.1",
     "sequelize": "^6.26.0"
   },
@@ -26,7 +32,7 @@
     "server": "node-env-run server --exec nodemon | pino-colada",
     "dev": "run-p server start"
   },
-  "proxy": "http://localhost:5432",
+  "proxy": "http://localhost:5432/",
   "eslintConfig": {
     "extends": "react-app"
   },

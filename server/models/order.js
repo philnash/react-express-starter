@@ -1,5 +1,5 @@
 "use strict";
-import { Model } from "sequelize";
+const { Model }= require ("sequelize");
 
 const inventory = require("./inventory");
 const user = require("./user");
@@ -16,39 +16,44 @@ module.exports = (sequelize, DataTypes) => {
       payment_method,
       billing,
     }) {
-      order.belongsTo(user, { as: "userid", foreignKey: "userid" });
+      order.belongsTo(user, { as: "userid", foreignKey: "userId" });
       order.belongsTo(payment_method, {
         as: "paymentmethodid",
-        foreignKey: "paymentmethodid",
+        foreignKey: "paymentmethodId",
       });
-      order.belongsTo(billing, { as: "billingid", foreignKey: "billingid" });
+      order.belongsTo(billing, { as: "billingid", foreignKey: "billingId" });
       order.belongsTo(shipping_address, {
         as: "shippingid",
-        foreignKey: "shippingid",
+        foreignKey: "shippingId",
       });
-      order.hasMany(inventory, { as: "productid", foreignKey: "productid" });
+      order.hasMany(inventory, { as: "productid", foreignKey: "productId" });
     }
   }
   order.init(
     {
       orderid: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         primaryKey: true,
         autoIncrement: true,
       },
-      userID: {
+      userId: {
+        type: DataTypes.STRING,
         foreignKey: true,
       },
-      paymentmethodid: {
+      paymentmethodId: {
+        type: DataTypes.STRING,
         foreignKey: true,
       },
-      billingid: {
+      billingId: {
+        type: DataTypes.STRING,
         foreignKey: true,
       },
-      shipid: {
+      shipId: {
+        type: DataTypes.STRING,
         foreignKey: true,
       },
-      productid: {
+      productId: {
+        type: DataTypes.STRING,
         foreignKey: true,
       },
       quantitypurchased: DataTypes.INTEGER,
