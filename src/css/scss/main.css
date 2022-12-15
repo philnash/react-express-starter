@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .home {
   height: 100%;
   padding-top: 40vh;
@@ -61,8 +67,9 @@
 }
 
 .Navbar {
-  position: fixed;
-  text-align: center;
+  position: -webkit-sticky;
+  position: sticky;
+  margin: 10px;
 }
 
 body {
