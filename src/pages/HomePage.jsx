@@ -19,6 +19,7 @@ function HomePage() {
         <Footer />
       </div>
       <div>
+        <br/>
         <aside>
           <Hero />
         </aside>
