@@ -66,6 +66,11 @@
   background: transparent;
 }
 
+.Navbar {
+  position: -webkit-sticky;
+  position: sticky;
+  margin: 10px;
+}
 
 body {
   background: #6a040f;
