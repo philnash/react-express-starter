@@ -21,9 +21,10 @@ The node modules and package-lock.json files are created and stored locally when
 3.   run npm i to install the package-lock.json and node_modules. Make sure you run this command in the Client and Server each time you pull new code in case there are new dependencies/node modules that need to be installed.
 4. Create a .env file in the Server folder. Add this information to your .env file:
         PORT=3001
-        PG_URI= 'paste your link here'
-        DB_USERNAME='enter your username here, typically it is postgres'
-        DB_PASSWORD='enter your password here'
+        use_env_variable=(put your PG_URI here)
+        PG_URI= paste your link here
+        DB_USERNAME=enter your username here, typically it is postgres
+        DB_PASSWORD=enter your password here
         DB_DATABASE=firestarter
 5. cd into Server and run npm i to install the package-lock.json and node_modules. 
 6. Open your PGAdmin and create a new database named firestarter.
@@ -35,6 +36,7 @@ The node modules and package-lock.json files are created and stored locally when
    Run both applications together with the command: npm run dev
 
    The React application will run on port 3000 and the server port 3001.
+8. Add the tables to your database. From the server folder, run sequelize db:migrate
 
 # Getting Started with Create React App
 

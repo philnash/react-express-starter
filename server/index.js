@@ -6,6 +6,7 @@ const pino = require('express-pino-logger')();
 const app = express();
 const {Sequelize } = require ('Sequelize')
 // const userController = require('./controllers')
+const sequelize = new Sequelize(process.env.PG_URI)
 
 require('dotenv').config();
 
@@ -27,6 +28,15 @@ app.use(express.urlencoded({ extended: true }))
 app.use(pino);
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
+
+//Database connection
+//This is used for Sequelize-CLI, and is not used when using the Models. Please do not delete this until the end of the project. 
+// try {
+//   sequelize.authenticate()
+//   console.log(`Connected with Sequelize at ${process.env.PG_URI}`)
+// }catch(err){
+//   console.log(`Unable to connect to PG: ${err}`)
+// }
 
 //Controllers
 app.use('/user', userController)
