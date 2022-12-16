@@ -7,7 +7,8 @@ function Navigation(){
     <div>
       <Nav>
         <Navbar>
-          <NavLink href="/home" to="./pages/home"><i class="fa-solid fa-house"></i>
+          <NavLink href="/home" to="./pages/home">
+            <i class="fa-solid fa-house"></i>
           </NavLink>
           <NavLink href="/products" to="./pages/products">
             Products

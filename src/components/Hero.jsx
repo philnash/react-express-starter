@@ -1,8 +1,15 @@
 function Hero(){
     return (
-      <div>
-        <h2> Hero Component </h2>
+      <main>
+      <div class = "hero">
+        
+       <h1>Testing testing testing</h1>
+       
+        
+     
       </div>
+     
+    </main>
     );
   };
   
