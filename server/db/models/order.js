@@ -3,7 +3,7 @@ const { Sequelize, DataTypes, Model } = require ('sequelize');
 // This next line is used when using the Index.js to create the models. We are not using Index.js to create the models. 
 // const sequelize = new Sequelize(process.env.PG_URI);
 
-const inventory = require("./inventory1");
+const inventory = require("./inventory");
 const user = require("./user");
 const shipping_address = require("./shipping_address");
 const payment_method = require("./payment_method");

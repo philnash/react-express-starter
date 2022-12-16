@@ -48,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'inventory',
-    tableName: 'inventory_table',
+    tableName: 'inventories',
     timestamps: false
   });
   return inventory;
