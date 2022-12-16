@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Component } from "react";
-import "../src/css/main.css"
+import "../src/css/scss/main.css";
+import "../src/css/scss/main.css.map";
 import Navigation from "./components/Navbar";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
@@ -10,6 +11,7 @@ import OrderConfirmationPage from "./pages/OrderConfirmationPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import Error404 from "./Error404";
+import Login from "./components/Login"
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -56,6 +58,7 @@ class App extends Component {
               <Route exact path="/profile" element={<ProfilePage />} />
               <Route exact path="/ordercomplete" element={<OrderConfirmationPage />} />
               <Route exact path="/checkout" element={<CheckoutPage />} />
+              <Route exact path="/login" element={<Login />}/>
               {/* <Route exact path="/product/:productid" element={<ProductDetails />}/> */}
               <Route exact path="/profile/:userid" element={<ProfilePage />} />
               <Route path="/" element={<Error404 />} />
