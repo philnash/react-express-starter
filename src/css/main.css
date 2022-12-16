@@ -24,54 +24,6 @@
   font-weight: 800;
 }
 
-.menu-btn {
-  position: absolute;
-  z-index: 1;
-  right: 1rem;
-  top: 1rem;
-  height: 20px;
-  width: 28px;
-  cursor: pointer;
-  transition: all 0.5s ease-in-out;
-}
-.menu-btn__burger {
-  position: absolute;
-  right: 0;
-  top: 0.5rem;
-  width: 28px;
-  height: 3px;
-  background: #f48c06;
-  transition: all 0.5s ease-in-out;
-}
-.menu-btn__burger::before {
-  content: "";
-  position: absolute;
-  top: -8px;
-  width: 28px;
-  height: 3px;
-  background: #f48c06;
-  transition: all 0.5s ease-in-out;
-}
-.menu-btn__burger::after {
-  content: "";
-  position: absolute;
-  top: 8px;
-  width: 20px;
-  height: 3px;
-  background: #f48c06;
-  transition: all 0.5s ease-in-out;
-}
-.menu-btn__burger.open {
-  transform: rotate(720deg);
-  background: transparent;
-}
-
-.Navbar {
-  position: -webkit-sticky;
-  position: sticky;
-  margin: 10px;
-}
-
 body {
   background: #6a040f;
   color: #f48c06;
