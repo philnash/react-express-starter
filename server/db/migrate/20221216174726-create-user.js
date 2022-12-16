@@ -8,14 +8,6 @@ module.exports = {
         autoIncrement: true,
         type: Sequelize.INTEGER
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
       userrole: {
         allowNull: true,
         defaultValue: 'Customer',
@@ -43,7 +35,27 @@ module.exports = {
         type: Sequelize.STRING
         // the next line can be used to define the pw parameters. What do we want them to be? 
         // is: /^[a-z]+$/i
-    }
+      },
+      billingid: {
+        foreignKey: true,
+        allowNull: true,
+        type: Sequelize.INTEGER
+      },
+      shipid: {
+        foreignKey: true,
+        allowNull: true,
+        type: Sequelize.INTEGER
+      },
+      paymentmethodid: {
+        foreignKey: true,
+        allowNull: true,
+        type: Sequelize.INTEGER
+      },
+      orderid: {
+        foreignKey: true,
+        allowNull: true,
+        type: Sequelize.INTEGER
+      },
     });
   },
   async down(queryInterface, Sequelize) {
