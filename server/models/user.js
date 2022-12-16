@@ -9,13 +9,13 @@ const payment_method = require("./payment_method");
 module.exports = (sequelize, DataTypes) => {
   class user extends Model {
     static associate({ order, shipping_address, payment_method, billing }) {
-      user.hasMany(shipping_address, { as: "shipid", foreignKey: "shipid" });
+      user.hasMany(shipping_address, { as: "shipid", foreignKey: "shipId" });
       user.hasMany(payment_method, {
         as: "paymentmethodid",
-        foreignKey: "paymentmethodid",
+        foreignKey: "paymentmethodId",
       });
-      user.hasMany(order, { as: "orderid", foreignKey: "orderid" });
-      user.hasMany(billing, { as: "billingid", foreignKey: "billingid" });
+      user.hasMany(order, { as: "orderid", foreignKey: "orderId" });
+      user.hasMany(billing, { as: "billingid", foreignKey: "billingId" });
     }
   }
 

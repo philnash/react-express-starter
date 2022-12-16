@@ -1,18 +1,18 @@
 CREATE DATABASE firestarter;
 
 CREATE TABLE user(
-    userid INTEGER SERIAL=500 PRIMARY KEY,
+    userid INTEGER PRIMARY KEY,
     userrole VARCHAR(25),
     username VARCHAR(50),
     firstname VARCHAR(50),
     lastname VARCHAR (50),
     email VARCHAR(100),
-    password TEXT, 
+    hashedPassword VARCHAR(100), 
     
-    shipid FOREIGN KEY,  
-    paymentmethodid FOREIGN KEY,
-    orderid FOREIGN KEY,
-    billingid FOREIGN KEY,
+    shipId FOREIGN KEY,  
+    paymentmethodId FOREIGN KEY,
+    orderId FOREIGN KEY,
+    billingId FOREIGN KEY,
 
     CONSTRAINT fk_shipid FOREIGN KEY (shipid) REFERENCES shipping_address(shipid)
     CONSTRAINT fk_paymentmethodid FOREIGN KEY (paymentmethodid) REFERENCES payment_method(paymentmethodid)
@@ -47,8 +47,8 @@ CREATE TABLE shipping_address(
     zipcode INTEGER NOT NULL,
     phone INTEGER(25), 
     
-    CONSTRAINT fk_user FOREIGN KEY (userid) REFERENCES user(userid),
-    CONSTRAINT fk_orderid FOREIGN KEY (orderid) REFERENCES order(orderid),
+    CONSTRAINT fk_user FOREIGN KEY (userid) REFERENCES user(userId),
+    CONSTRAINT fk_orderid FOREIGN KEY (orderid) REFERENCES order(orderId),
 );
 
 CREATE TABLE payment_method(
@@ -59,10 +59,10 @@ CREATE TABLE payment_method(
     securitycode VARCHAR (25),
     nameofcard VARCHAR(25),
     
-    orderid FOREIGN KEY,
-    userid FOREIGN KEY,
-    CONSTRAINT fk_userid FOREIGN KEY (userid) REFERENCES user(userid),
-    CONSTRAINT fk_orderid FOREIGN KEY (orderid) REFERENCES order(orderid)
+    orderId FOREIGN KEY,
+    userId FOREIGN KEY,
+    CONSTRAINT fk_userid FOREIGN KEY (userId) REFERENCES user(userid),
+    CONSTRAINT fk_orderid FOREIGN KEY (orderId) REFERENCES order(orderid)
 );
 
 CREATE TABLE order(

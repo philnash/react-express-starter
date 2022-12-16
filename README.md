@@ -18,26 +18,23 @@ The node modules and package-lock.json files are created and stored locally when
 ### To get started locally, follow these instructions. Also, each time you begin coding, please make sure you follow these steps to ensure you have the most up to date code. 
 1. Each time you start coding, you need to visit our github repository first and go to pull requests. https://github.com/defworm/Firestarter/pulls  Check if there are any new pull requests that need to be reviewed. If so, review the request and merge with the "Development" branch - not the main branch. 
 2.  In your terminal (VS Code), use the command "git pull origin development" to pull the most recent updates into your terminal. 
-3.  cd into Server and run npm i to install the package-lock.json and node_modules. 
-4. Open a second terminal. cd into Client and run npm i to install the package-lock.json and node_modules. Make sure you run this command in the Client and Server each time you pull new code in case there are new dependencies/node modules that need to be installed.
-5. Open your PGAdmin and create a new database named firestarter.
-6. Create a .env file in the Client folder. Add this information to your .env file:
-        PORT=3000
-        REACT_APP_SERVER_URL=http://localhost:3000/
-7.  Create a .env file in the Server folder. Add this information to your .env file:
-        PORT=5000
+3.   run npm i to install the package-lock.json and node_modules. Make sure you run this command in the Client and Server each time you pull new code in case there are new dependencies/node modules that need to be installed.
+4. Create a .env file in the Server folder. Add this information to your .env file:
+        PORT=3001
         PG_URI= 'paste your link here'
         DB_USERNAME='enter your username here, typically it is postgres'
         DB_PASSWORD='enter your password here'
         DB_DATABASE=firestarter
-8.  Start the server. 
+5. cd into Server and run npm i to install the package-lock.json and node_modules. 
+6. Open your PGAdmin and create a new database named firestarter.
+7. Start the app.
    You can start the server on its own with the command: npm run server
 
    Run the React application on its own with the command: npm start
 
    Run both applications together with the command: npm run dev
 
-   The React application will run on port 3000 and the server port 5432.
+   The React application will run on port 3000 and the server port 3001.
 
 # Getting Started with Create React App
 

@@ -1,16 +1,23 @@
-const router = require('express').Router()
-
+// const { router } = require('express').Router()
+const express = require('express')
+const { Router } = express
+const router = Router()
 const { hashSync } = require ('bcrypt')
-// const bcrypt = require ('bcrypt')
-const { db } = require('../index')
-// const cookie = require('cookie')
-// const { User } = db
+const bcrypt = require ('bcrypt')
+const db = require('../models/user')
+const cookie = require('cookie')
+const { user } = db
+
+router.get('/', async (req, res) => {
+    const users = await user.findAll()
+    res.json(users)
+})
 
 //addUser
 router.post('/', async (req, res) => {
-    const { firstName, lastName, email, streetaddress, password, } = req.body;
-    let passwordHash = hashSync(password);
-    console.log({passwordHash})
+    const passwordHash = bcrypt.hashSync(password);
+    let { username, firstName, lastName, email, passwordHashed, } = req.body;
+    console.log(`This is passwordHash: ` + `${ passwordHashed }`)
     db.user.findOne({ where: { email: email }, paranoid: false })
         .then(find => {
             if (find) {
@@ -95,22 +102,22 @@ router.put('/:userid', async (req, res) => {
 
 //login in the user
 router.get('/',async (req, res) => {
-    const {username,password}=req.body
-    try{
-        const user = await UserModel.findOne({username: username})
+    // const {username,password}=req.body
+    // try{
+    //     const user = await UserModel.findOne({username: username})
 
-        if(user)
-        {
-            const validity = await user.compare(password, user.password)
+    //     if(user)
+    //     {
+    //         const validity = await user.compare(password, user.password)
 
-            validity? res.status(200).json(loginUser):res.status(400)
-        }
-        else{
-            res.status(404).json("Non existant user")
-        }
-    }catch(error){
-        res.status(500).json({error})
-    }
+    //         validity? res.status(200).json(loginUser):res.status(400)
+    //     }
+    //     else{
+    //         res.status(404).json("Non existant user")
+    //     }
+    // }catch(error){
+    //     res.status(500).json({error})
+    // }
 })
 
 //Delete user 
@@ -129,4 +136,3 @@ router.delete('/:userid', async (req, res, next) => {
             next(err)
         })
 })
-

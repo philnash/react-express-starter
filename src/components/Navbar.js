@@ -8,7 +8,7 @@ function Navigation() {
       <Nav>
         <Navbar>
           <NavLink href="/home" to="./pages/home">
-            <i class="fa-solid fa-house"></i>
+            <i className="fa-solid fa-house"></i>
           </NavLink>
           <NavLink href="/products" to="./pages/products">
             Products
@@ -18,7 +18,7 @@ function Navigation() {
           </NavLink>
           {/* I added the fontawesome icons for fun. Feel free to remove them or use them */}
           <NavLink href="/profile">
-            <i class="fa-regular fa-circle-user"></i>
+            <i className="fa-regular fa-circle-user"></i>
           </NavLink>
           <button>
             <NavLink href="/login" to="./pages/login">
@@ -31,7 +31,7 @@ function Navigation() {
             </NavLink>
           </button>
           <NavLink href="/checkout">
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <i className="fa fa-shopping-cart" aria-hidden="true"></i>
           </NavLink>
         </Navbar>
       </Nav>

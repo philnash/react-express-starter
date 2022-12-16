@@ -13,8 +13,10 @@
     "db": "^3.4.0",
     "dotenv": "^16.0.3",
     "fs": "^0.0.1-security",
+    "json-web-token": "^3.2.0",
     "path": "^0.12.7",
     "pg": "^8.8.0",
+    "pino": "^8.8.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.7.0",
     "react-dom": "^17.0.2",
@@ -32,7 +34,7 @@
     "server": "node-env-run server --exec nodemon | pino-colada",
     "dev": "run-p server start"
   },
-  "proxy": "http://localhost:5432/",
+  "proxy": "http://localhost:3001/",
   "eslintConfig": {
     "extends": "react-app"
   },

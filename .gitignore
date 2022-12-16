@@ -8,6 +8,9 @@
 /src/package-lock.json
 /src/package.json
 
+/server/node_modules
+
+
 # testing
 /coverage
 
