@@ -1,107 +1,122 @@
-// const { router } = require('express').Router()
 const express = require('express')
 const { Router } = express
-const router = Router()
-const { hashSync } = require ('bcrypt')
-const bcrypt = require ('bcrypt')
-const db = require('../models/user')
-const cookie = require('cookie')
+// const router = Router()
+// const router = express.Router()
+const userRouter = express.Router()
+
+// const { hashSync } = require ('bcrypt')
+// const bcrypt = require ('bcrypt')
+// const cookie = require('cookie')
+
+const db = require('../db/models')
 const { user } = db
 
-router.get('/', async (req, res) => {
+//Middleware
+
+
+userRouter.get('/', (req, res)=>{
+    res.send('userRouter is working')
+})
+
+//The below path is /user/health
+userRouter.get('/health', async(req, res)=> {
+    res.send ({
+        statusCode:200, 
+        message: "userRouter is healthy"
+})
+})
+
+
+userRouter.get('/users', async (req, res) => {
     const users = await user.findAll()
     res.json(users)
 })
 
+
 //addUser
-router.post('/', async (req, res) => {
-    const passwordHash = bcrypt.hashSync(password);
-    let { username, firstName, lastName, email, passwordHashed, } = req.body;
-    console.log(`This is passwordHash: ` + `${ passwordHashed }`)
-    db.user.findOne({ where: { email: email }, paranoid: false })
-        .then(find => {
-            if (find) {
-                throw new RequestError('Email is already in use', 409);
-            }
-            return db.user.create({
-                userrole: "customer",
-                username: username,
-                firstname: firstname,
-                lastname: lastname,
-                email: email,
-                password: passwordHash,
-            })
+// userRouter.post('/createuser', async (req, res) => {
+//     const hashedPassword = bcrypt.hashSync(password);
+//     let { username, firstname, lastname, email, password } = req.body;
+//     console.log(`This is hashedPassword: ` + `${ hashedPassword }`)
+//     db.user.findOne({ where: { email: email }, paranoid: false })
+//         .then(find => {
+//             if (find) {
+//                 throw new RequestError('Email is already in use', 409);
+//             }
+//             return db.user.create({
+//                 userrole: "Customer",
+//                 username: username,
+//                 firstname: firstname,
+//                 lastname: lastname,
+//                 email: email,
+//                 password: hashedPassword,
+//             })
 
-        })
-        .then(user => {
-            if (user) {
-                return res.status(400).json("Can't find your password");
-            }
-            else
-                res.status(500).json({ 'success': false });
-        })
-        .catch(err => {
-            console.log(err)
-            next(err);
-        })
-})
+//         })
+//         .then(user => {
+//             if (user) {
+//                 return res.status(400).json("Can't find your password");
+//             }
+//             else
+//                 res.status(500).json({ 'success': false });
+//         })
+//         .catch(err => {
+//             console.log(err)
+//             next(err);
+//         })
+// })
 
-router.get('/health', async(req, res)=> {
-    return {
-        statusCode:200, 
-        message: "server is healthy"
-    }
-})
+
 
 //Find users
-router.get('/', async (req, res) => {
-    db.user.findOne({ attributes: ["username", "firstname", "lastname"], where: { email: req.query.email }, paranoid: false })
-        .then(user => {
-            if (user) {
-                return res.status(200).json({ success: true, data: user });
-            }
-            else
-                res.status(500).json({ 'success': false });
-        })
-        .catch(err => {
-            console.log(err)
-            next(err);
-        })
-})
+// userRouter.get('/', async (req, res) => {
+//     db.user.findOne({ attributes: ["username", "firstname", "lastname"], where: { email: req.query.email }, paranoid: false })
+//         .then(user => {
+//             if (user) {
+//                 return res.status(200).json({ success: true, data: user });
+//             }
+//             else
+//                 res.status(500).json({ 'success': false });
+//         })
+//         .catch(err => {
+//             console.log(err)
+//             next(err);
+//         })
+// })
 
 //Update user info
-router.put('/:userid', async (req, res) => {
+// userRouter.put('/:userid', async (req, res) => {
    
-    const { userId, firstName, lastName, email, streetaddress, password, } = req.body;
-    let passwordHash = hashSync(password);
-    db.user.findOne({ where: { email: email }, paranoid: false })
-        .then(user => {
-            if (!user) {
-                throw new RequestError('User is not found', 409);
-            }
-            return db.user.update({
-                username: username ? username: user.username, 
-                firstname : firstnameirstname ? firstname : user.firstname,
-                lastname: lastname ? lastname : user.lastname,
-                password: password ? passwordHash : user.password,
-            }, { where: { userid: userid } })
+//     const { userId, firstName, lastName, email, streetaddress, password, } = req.body;
+//     let passwordHash = hashSync(password);
+//     db.user.findOne({ where: { email: email }, paranoid: false })
+//         .then(user => {
+//             if (!user) {
+//                 throw new RequestError('User is not found', 409);
+//             }
+//             return db.user.update({
+//                 username: username ? username: user.username, 
+//                 firstname : firstnameirstname ? firstname : user.firstname,
+//                 lastname: lastname ? lastname : user.lastname,
+//                 password: password ? passwordHash : user.password,
+//             }, { where: { userid: userid } })
 
-        })
-        .then(user => {
-            if (user) {
-                return res.status(200).json({ success: true, msg: "User successsfully updated" });
-            }
-            else
-                res.status(500).json({ 'success': false });
-        })
-        .catch(err => {
-            console.log(err)
-            next(err);
-        })
-})
+//         })
+//         .then(user => {
+//             if (user) {
+//                 return res.status(200).json({ success: true, msg: "User successsfully updated" });
+//             }
+//             else
+//                 res.status(500).json({ 'success': false });
+//         })
+//         .catch(err => {
+//             console.log(err)
+//             next(err);
+//         })
+// })
 
 //login in the user
-router.get('/',async (req, res) => {
+// userRouter.get('/',async (req, res) => {
     // const {username,password}=req.body
     // try{
     //     const user = await UserModel.findOne({username: username})
@@ -118,21 +133,22 @@ router.get('/',async (req, res) => {
     // }catch(error){
     //     res.status(500).json({error})
     // }
-})
+// })
 
 //Delete user 
-router.delete('/:userid', async (req, res, next) => {
-    const userid = Number(req.params.userid) 
-    db.user.findOne({ where: { userid: userid } })
-        .then(data => {
-            if (data) {
-                return db.user.destroy({ where: { userid: userid} }).then(r => [r, data])
-            }
-            throw new RequestError('User is not found', 409)
-        })
-        .then(re => {
-            return res.status(200).json({ 'status': "Successfully deleted user" });
-        }).catch(err => {
-            next(err)
-        })
-})
+// userRouter.delete('/:userid', async (req, res, next) => {
+//     const userid = Number(req.params.userid) 
+//     db.user.findOne({ where: { userid: userid } })
+//         .then(data => {
+//             if (data) {
+//                 return db.user.destroy({ where: { userid: userid} }).then(r => [r, data])
+//             }
+//             throw new RequestError('User is not found', 409)
+//         })
+//         .then(re => {
+//             return res.status(200).json({ 'status': "Successfully deleted user" });
+//         }).catch(err => {
+//             next(err)
+//         })
+// })
+module.exports = userRouter
