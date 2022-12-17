@@ -124,6 +124,6 @@ The [twilio branch](https://github.com/philnash/react-express-starter/tree/twili
 ## Our Project Inspiration
 
 ## Our Sources
-* [react-express-starter] (https://github.com/philnash/react-express-starter)
-* [Sass-Tutorial-For-Beginners] (https://www.youtube.com/watch?v=_a5j7KoflTs&t=7372s)
+* [react-express-starter](https://github.com/philnash/react-express-starter)
+* [Sass Tutorial For Beginners](https://www.youtube.com/watch?v=_a5j7KoflTs&t=7372s)
 * 
