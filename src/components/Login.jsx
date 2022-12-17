@@ -3,6 +3,11 @@ import { useState } from "react";
 function Login(){
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(email);
+    console.log(password);
+  }
 
     return (
       <div className="App">
@@ -11,7 +16,7 @@ function Login(){
           <h1>Login</h1>
           <br></br>
           <br></br>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div>
             <label>Email</label>
             <input
@@ -32,7 +37,7 @@ function Login(){
               }}
             />
             </div>
-            <input type="button" value="Submit" />
+            <input type="submit" value="Submit" />
           </form>
         </div>
         <br></br>
