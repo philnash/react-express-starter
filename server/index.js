@@ -60,6 +60,6 @@ app.use('/user', userRouter)
 //   res.send(JSON.stringify({ greeting: `Hello ${name}!` }));
 // });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Burnin' on ${process.env.PORT}`)
+app.listen(process.env.BE_PORT, () => {
+  console.log(`Burnin' on ${process.env.BE_PORT}`)
 })

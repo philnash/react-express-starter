@@ -1,18 +1,29 @@
 const express = require('express')
 const { Router } = express
+<<<<<<< Updated upstream
 // const router = Router()
 // const router = express.Router()
 const userRouter = express.Router()
 
+=======
+const router = express.Router()
+const { User } = require('../db/models/user')
+const db = require('../config/database')
+
+//Middleware
+>>>>>>> Stashed changes
 // const { hashSync } = require ('bcrypt')
 // const bcrypt = require ('bcrypt')
 // const cookie = require('cookie')
 
+<<<<<<< Updated upstream
 // const db = require('../db/models')
 // const { user } = db
 
 //Middleware
 
+=======
+>>>>>>> Stashed changes
 //Use this path to test your connection in Postman localhost:3001/user
 userRouter.get('/', (req, res)=>{
     res.send('userRouter is working')
@@ -25,11 +36,23 @@ userRouter.get('/health', async(req, res)=> {
         message: "userRouter is healthy"
 })
 })
+<<<<<<< Updated upstream
 
 
 userRouter.get('/users', async (req, res) => {
     const users = await user.findAll()
     res.json(users)
+=======
+//Tammy when you come back to this try using https://www.tcpdump.org/ or  wireshark to capture network traffic and see if the connection is being established and if there are any issues with the traffic
+router.get('/users', async (req, res) => {
+    try {
+        // Use the findAll() function to fetch all users
+        const users = await User.findAll();
+        res.json(users);
+      } catch (error) {
+        res.status(500).json({ message: 'Error getting users' });
+      }
+>>>>>>> Stashed changes
 })
 
 
