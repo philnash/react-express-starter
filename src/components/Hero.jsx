@@ -3,7 +3,7 @@ function Hero(){
       <main>
       <div class = "hero">
         
-       <h1>Testing testing testing</h1>
+       <h1>Hero Component</h1>
        
         
      
