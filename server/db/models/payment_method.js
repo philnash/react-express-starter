@@ -1,5 +1,5 @@
 "use strict";
-const { Sequelize, DataTypes, Model } = require ('sequelize');
+// const { Sequelize, DataTypes, Model } = require ('sequelize');
 // const sequelize = new Sequelize(process.env.PG_URI)
 
 const order = require("./order");

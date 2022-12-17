@@ -1,5 +1,5 @@
 "use strict";
-const { Sequelize, DataTypes, Model } = require ('sequelize');
+// const { Sequelize, DataTypes, Model } = require ('sequelize');
 // The next line is used when using index.js to create models, but we are not using this right now
 // const sequelize = new Sequelize(process.env.use_env_variable);
 

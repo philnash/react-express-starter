@@ -3,13 +3,12 @@ const { Router } = express
 // const router = Router()
 // const router = express.Router()
 const userRouter = express.Router()
+const { user } = require('../db/models/user')
+const db = require('../config/database')
 
 // const { hashSync } = require ('bcrypt')
 // const bcrypt = require ('bcrypt')
 // const cookie = require('cookie')
-
-// const db = require('../db/models')
-// const { user } = db
 
 //Middleware
 

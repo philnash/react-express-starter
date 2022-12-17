@@ -1,5 +1,5 @@
 'use strict';
-const { Sequelize, DataTypes, Model } = require ('sequelize');
+// const { Sequelize, DataTypes, Model } = require ('sequelize');
 // This next line is used when using the Index.js to create the models. We are not using Index.js to create the models. 
 // const sequelize = new Sequelize(process.env.PG_URI);
 
@@ -23,8 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       user,
       payment_method, 
       billing, 
-      shipping_address,
-      inventory }) {
+      shipping_address}) {
         {
           order.belongsTo(user, {
              as: 'userid',foreignKey: 'id'

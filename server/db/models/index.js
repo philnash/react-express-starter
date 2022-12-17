@@ -1,14 +1,14 @@
 // Instead of using an index file to configure the models, we will use CLI commands to genereate the models. This file is typically only used for setup. See Mod 4- Activity 3.
 
-const { Sequelize } = require("sequelize");
 
-// This code is from the activity from class
+// // This code is from the activity from class
+// const { Sequelize } = require("sequelize");
 
-if (config.use_env_variable){
-    sequelize = new Sequelize(process.env[use_env_variable], config); 
-} else {
-    sequelize = new Sequelize(config.database, config.username, config.password, config)
-}
+// if (config.use_env_variable){
+//     sequelize = new Sequelize(process.env[use_env_variable], config); 
+// } else {
+//     sequelize = new Sequelize(config.database, config.username, config.password, config)
+// }
 
 
 // "use strict";

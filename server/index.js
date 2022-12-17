@@ -23,6 +23,7 @@ db.authenticate()
 //   ))
 
 const userRouter = require('./controllers/userController')
+const inventoryRouter = require('./controllers/inventoryController')
 
 //This route is so that you know when your route is working. Delete this route at then end of the project 
 app.get('/', (req, res) =>{
