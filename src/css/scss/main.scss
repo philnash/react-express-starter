@@ -1,9 +1,10 @@
 @import './config';
 @import './home';
 @import './menu';
-@import './navbar';
+@import './Navbar';
 @import './login';
 @import './footer';
+@import './responsive';
 
 
 
@@ -56,12 +57,3 @@ main {
     }
 }
 
-footer {
-    font-size: 1rem;
-    position: fixed;
-    bottom: 0.4rem;
-    right: 1rem;
-    text-align: right;
-    padding: 1rem;
-    color: set-text-color($primary-color);
-}
