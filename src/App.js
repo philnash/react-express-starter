@@ -70,9 +70,7 @@ class App extends Component {
           <br/>
           
         </header>
-        <main>
-          
-        </main>
+        
         
         </body>
         <footer>

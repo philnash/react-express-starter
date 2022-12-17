@@ -3,8 +3,24 @@ import { useState } from "react";
 function Login(){
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+  const loginResponse = await fetch("/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password}),
+  });
+  const loginData = await loginResponse.json();
+  // handle the reponse from the backend here
+
+  if (loginData.success) {
+    console.log("Successful login!");
+  }
+  else {
+    console.error("Error logging in:", loginData.error);
+  }
     console.log(email);
     console.log(password);
   }
@@ -12,7 +28,7 @@ function Login(){
     return (
       <div className="App">
       <header className="App-header">
-        <div class="login-box">
+        <div className="login-box">
           <h1>Login</h1>
           <br></br>
           <br></br>
@@ -29,7 +45,7 @@ function Login(){
             />
             <label>Password</label>
             <input
-              type="password"
+              type="current-password"
               name="password"
               placeholder="Enter Your Password Here"
               onChange={(event) => {
@@ -41,7 +57,7 @@ function Login(){
           </form>
         </div>
         <br></br>
-        <p class="para-2">
+        <p className="para-2">
           Don't have an account? <a href="./createuser">Sign Up Here</a>
         </p>
       </header>

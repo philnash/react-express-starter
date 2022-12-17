@@ -5,8 +5,8 @@ function Footer(){
        
         
         <p><a href="email@email.com"><i class="fa-solid fa-envelope"></i></a></p>
-        <i class="fa-sharp fa-solid fa-fire-flame"></i>
-        <i class="fa-brands fa-twitter"></i>
+        <i className="fa-sharp fa-solid fa-fire-flame"></i>
+        <i className="fa-brands fa-twitter"></i>
       </div>
     );
   };

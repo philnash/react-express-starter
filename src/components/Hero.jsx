@@ -1,7 +1,7 @@
 function Hero(){
     return (
       <main>
-      <div class = "hero">
+      <div className= "hero">
         
        <h1>Hero Component</h1>
        

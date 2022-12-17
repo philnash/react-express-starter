@@ -113,6 +113,30 @@ body {
   line-height: 1;
 }
 
+button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  line-height: normal;
+  font-weight: 400;
+  font-style: normal;
+  transition: all 0.25s;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  touch-action: manipulation;
+  outline: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  user-select: none;
+}
+button:disabled {
+  cursor: not-allowed;
+}
+
 h1, h2, h3 {
   font-weight: 700;
 }
