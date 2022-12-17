@@ -1,10 +1,16 @@
 require('dotenv').config();
 const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors')
-const pino = require('express-pino-logger')();
 const app = express();
-const {Sequelize } = require ('Sequelize')
+
+// the next line is used with the index.js file when creating models
+// const sequelize = new Sequelize(process.env.PG_URI)
+
+//Middleware
+const bodyParser = require('body-parser');
+const pino = require('express-pino-logger')();
+const cors = require('cors')
+
+
 // const userController = require('./controllers')
 
 require('dotenv').config();
@@ -14,29 +20,25 @@ app.use(bodyParser.json());
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 
-const {Sequelize } = require ('Sequelize')
+const {Sequelize } = require ('sequelize')
 // const userController = require('./controllers')
 
-require('dotenv').config();
-
-
-app.use(bodyParser.json());
-app.use(express.static('public'))
-app.use(express.urlencoded({ extended: true }))
-
-app.use(pino);
-app.use(express.static('public'))
-app.use(express.urlencoded({ extended: true }))
-
-//Controllers
-app.use('/user', userController)
-// app.use('/api/payment', require('./controllers/paymentController'))
+//Database connection
+//This is used for Sequelize-CLI, and is not used when using the Models. Please do not delete this until the end of the project. 
+// try {
+//   sequelize.authenticate()
+//   console.log(`Connected with Sequelize at ${process.env.PG_URI}`)
+// }catch(err){
+//   console.log(`Unable to connect to PG: ${err}`)
+// }
 
 //Delete this route once working 
 app.get('/', (req, res) =>{
   res.send('Hello, Firestarters')
 })
+
 // Controllers
+// app.use('/user', userController)
 // app.use('/profile', userController)
 // app.use('/login', require ('./controllers/userController'))
 // app.use('/createaccount', userController)
@@ -44,15 +46,6 @@ app.get('/', (req, res) =>{
 ///I am not sure what the below routes are for so I commented then out until we get the other routes working
 
 // app.use('/api/payment', require('./controllers/paymentController'))
-
-//Delete this route once working 
-app.get('/', (req, res) =>{
-  res.send('Hello, Firestarters')
-})
-// Controllers
-// app.use('/profile', userController)
-// app.use('/login', require ('./controllers/userController'))
-// app.use('/createaccount', userController)
 
 ///I am not sure what the below routes are for so I commented then out until we get the other routes working
 
