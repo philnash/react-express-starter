@@ -2,9 +2,11 @@ const express = require('express')
 const { Router } = express
 // const router = Router()
 // const router = express.Router()
-const userRouter = express.Router()
-const { user } = require('../db/models/user')
+const router = express.Router()
+const { User } = require('../db/models/user')
 const db = require('../config/database')
+
+
 
 // const { hashSync } = require ('bcrypt')
 // const bcrypt = require ('bcrypt')
@@ -13,27 +15,26 @@ const db = require('../config/database')
 //Middleware
 
 //Use this path to test your connection in Postman localhost:3001/user
-userRouter.get('/', (req, res)=>{
-    res.send('userRouter is working')
+router.get('/', (req, res)=>{
+    res.send('router is working')
 })
 
 //The below path is .../user/health
-userRouter.get('/health', async(req, res)=> {
+router.get('/health', async(req, res)=> {
     res.send ({
         statusCode:200, 
-        message: "userRouter is healthy"
+        message: "router is healthy"
 })
 })
 
-
-userRouter.get('/users', async (req, res) => {
-    const users = await user.findAll()
+router.get('/users', async (req, res) => {
+    const users = await User.findAll()
     res.json(users)
 })
 
 
 //addUser
-// userRouter.post('/createuser', async (req, res) => {
+// router.post('/createuser', async (req, res) => {
 //     const hashedPassword = bcrypt.hashSync(password);
 //     let { username, firstname, lastname, email, password } = req.body;
 //     console.log(`This is hashedPassword: ` + `${ hashedPassword }`)
@@ -68,7 +69,7 @@ userRouter.get('/users', async (req, res) => {
 
 
 //Find users
-// userRouter.get('/', async (req, res) => {
+// router.get('/', async (req, res) => {
 //     db.user.findOne({ attributes: ["username", "firstname", "lastname"], where: { email: req.query.email }, paranoid: false })
 //         .then(user => {
 //             if (user) {
@@ -84,7 +85,7 @@ userRouter.get('/users', async (req, res) => {
 // })
 
 //Update user info
-// userRouter.put('/:userid', async (req, res) => {
+// router.put('/:userid', async (req, res) => {
    
 //     const { userId, firstName, lastName, email, streetaddress, password, } = req.body;
 //     let passwordHash = hashSync(password);
@@ -115,7 +116,7 @@ userRouter.get('/users', async (req, res) => {
 // })
 
 //login in the user
-// userRouter.get('/',async (req, res) => {
+// router.get('/',async (req, res) => {
     // const {username,password}=req.body
     // try{
     //     const user = await UserModel.findOne({username: username})
@@ -135,7 +136,7 @@ userRouter.get('/users', async (req, res) => {
 // })
 
 //Delete user 
-// userRouter.delete('/:userid', async (req, res, next) => {
+// router.delete('/:userid', async (req, res, next) => {
 //     const userid = Number(req.params.userid) 
 //     db.user.findOne({ where: { userid: userid } })
 //         .then(data => {
@@ -150,4 +151,4 @@ userRouter.get('/users', async (req, res) => {
 //             next(err)
 //         })
 // })
-module.exports = userRouter
+module.exports = router

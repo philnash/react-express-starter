@@ -19,7 +19,16 @@ The node modules and package-lock.json files are created and stored locally when
 1. Each time you start coding, you need to visit our github repository first and go to pull requests. https://github.com/defworm/Firestarter/pulls  Check if there are any new pull requests that need to be reviewed. If so, review the request and merge with the "Development" branch - not the main branch. 
 2.  In your terminal (VS Code), use the command "git pull origin development" to pull the most recent updates into your terminal. 
 3.   run npm i to install the package-lock.json and node_modules. Make sure you run this command in the Client and Server each time you pull new code in case there are new dependencies/node modules that need to be installed.
-4. Create a .env file in the Server folder. Add this information to your .env file:
+4. a. Create a .env file in the root folder. Add this information to your .env file:
+        # Frontend
+REACT_APP_SERVER_URL=http://localhost/3000/
+PORT=3000
+        use_env_variable=(put your PG_URI here)
+        PG_URI= paste your link here
+        DB_USERNAME=enter your username here, typically it is postgres
+        DB_PASSWORD=enter your password here
+        DB_DATABASE=firestarter
+4. b. Create a .env file in the Server folder. Add this information to your .env file:
         PORT=3001
         use_env_variable=(put your PG_URI here)
         PG_URI= paste your link here
@@ -27,7 +36,7 @@ The node modules and package-lock.json files are created and stored locally when
         DB_PASSWORD=enter your password here
         DB_DATABASE=firestarter
 5. cd into Server and run npm i to install the package-lock.json and node_modules. 
-6. Open your PGAdmin and create a new database named firestarter.
+6. Open your PGAdmin and create a new database named firestarter, or open your database and log in.
 7. Start the app.
    You can start the server on its own with the command: npm run server
 
@@ -36,7 +45,7 @@ The node modules and package-lock.json files are created and stored locally when
    Run both applications together with the command: npm run dev
 
    The React application will run on port 3000 and the server port 3001.
-8. Add the tables to your database. From the server folder, run sequelize db:migrate
+8. Add the tables to your database. From the server folder, run sequelize db:migrate:all
         *If there are errors, to undo migration run npx sequelize-cli db:migrate:undo:all 
 9. Add the seed data run npx sequelize-cli db:seed:all
                 *If there are problems, undo the seed with the command npx sequelize-cli db:seed:undo
