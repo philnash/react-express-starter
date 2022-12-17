@@ -16,7 +16,7 @@ function HomePage() {
         <hr/>
         <br/>
         <ShoppingCart />
-        <Footer />
+      
       </div>
       <div>
         <br/>
