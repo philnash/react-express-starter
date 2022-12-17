@@ -12,12 +12,13 @@ import CheckoutPage from "./pages/CheckoutPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import Error404 from "./Error404";
 import Login from "./components/Login"
+import CreateUser from "./components/CreateUser";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // import CurrentUserProvider from './contexts/CurrentUser'
 // import * as serviceWorker from "./serviceWorker";
-// import CreateUser from "./components/CreateUser";
+
 
 class App extends Component {
   constructor(props) {
@@ -59,6 +60,7 @@ class App extends Component {
               <Route exact path="/ordercomplete" element={<OrderConfirmationPage />} />
               <Route exact path="/checkout" element={<CheckoutPage />} />
               <Route exact path="/login" element={<Login />}/>
+              <Route exact path="/createuser" element={<CreateUser />} />
               {/* <Route exact path="/product/:productid" element={<ProductDetails />}/> */}
               <Route exact path="/profile/:userid" element={<ProfilePage />} />
               <Route path="/" element={<Error404 />} />
