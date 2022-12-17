@@ -67,21 +67,20 @@ CREATE TABLE payment_method(
 
 CREATE TABLE order(
     id INTEGER PRIMARY KEY,
-    datecreated TIMESTAMP,
-    productname VARCHAR(255),
+    createdAt TIMESTAMP,
     quantitypurchased INTEGER,
-    ordersubtotal MONEY,
-    shippingcost MONEY,
-    ordertax MONEY,
-    ordertotal MONEY,
+    ordersubtotal VARCHAR,
+    shippingcost VARCHAR,
+    ordertax VARCHAR,
+    ordertotal VARCHAR,
     shipped BOOLEAN, 
     expdeliverydate DATE, 
     
     userid FOREIGN KEY,
+    productid FOREIGN KEY,
+    shipid FOREIGN KEY,
     paymentmethodid FOREIGN KEY,
     billingid FOREIGN KEY,
-    shipid FOREIGN KEY,
-    productid FOREIGN KEY,
     
     CONSTRAINT fk_userid FOREIGN KEY (userid) REFERENCES user(id),
     CONSTRAINT fk_paymentmethodid FOREIGN KEY (paymentmethodid) REFERENCES payment_method(id)

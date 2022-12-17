@@ -17,6 +17,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       expirationdate: {
+        allowNull: true,
         type: Sequelize.DATE
       },
       securitycode: {
@@ -27,19 +28,21 @@ module.exports = {
         type: Sequelize.STRING
       },
       orderid: {
+        allowNull: true,
         foreignKey: true,
         type: Sequelize.INTEGER
       },
       userid: {
         foreignKey: true,
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       createdAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       }
     });

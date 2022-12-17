@@ -5,7 +5,7 @@ module.exports = {
     await queryInterface.createTable('billings', {
       id: {
         autoIncrement: true,
-        primaryKey: true,
+        primaryKey: false,
         type: Sequelize.INTEGER
       },
       billingname: {
@@ -15,14 +15,22 @@ module.exports = {
         type: Sequelize.STRING
       },
       billinglinetwo: {
+        allowNull: true,
         type: Sequelize.STRING
       },
       billingcity: {
         type: Sequelize.STRING
       },
+      billingstate: {
+        type: Sequelize.STRING
+      },
       billingzipcode: {
         type: Sequelize.STRING
       },
+      userid: {
+        foreignKey: true,
+        type: Sequelize.INTEGER
+      }
     });
   },
   async down(queryInterface, Sequelize) {

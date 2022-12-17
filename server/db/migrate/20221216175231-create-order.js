@@ -8,33 +8,59 @@ module.exports = {
         autoIncrement: true,
         type: Sequelize.INTEGER
       },
+      userid: {
+        foreignKey: true,
+        type: Sequelize.INTEGER
+      },
+      productid: {
+        foreignKey: true, 
+        type: Sequelize.INTEGER
+      },
+      shipid: {
+        foreignKey: true, 
+        type: Sequelize.INTEGER
+      },
+      paymentmethodid: {
+        foreignKey: true, 
+        type: Sequelize.INTEGER
+      },
+      billingid: {
+        foreignKey: true, 
+        type: Sequelize.INTEGER
+      },
       quantitypurchased: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       ordersubtotal: {
+        allowNull: true,
         type: Sequelize.STRING
       },
       shippingcost: {
+        allowNull: true,
         type: Sequelize.STRING
       },
       ordertax: {
+        allowNull: true,
         type: Sequelize.STRING
       },
       ordertotal: {
+        allowNull: true,
         type: Sequelize.STRING
       },
       shipped: {
+        allowNull: true,
         type: Sequelize.BOOLEAN,
-        allowNull: true
       },
       expdeliverydate: {
-        type: Sequelize.DATE,
-        allowNull: true
+        allowNull: true,
+        type: Sequelize.DATE
       },
       createdAt: {
+        allowNull: true,
         type: Sequelize.DATE
       },
       updatedAt: {
+        allowNull: true,
         type: Sequelize.DATE
       }
     });

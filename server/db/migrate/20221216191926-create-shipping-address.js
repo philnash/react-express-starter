@@ -14,11 +14,11 @@ module.exports = {
         type: Sequelize.STRING
       },
       createdAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       },
       country: {
@@ -31,6 +31,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       addresslinetwo: {
+        allowNull: true,
         type: Sequelize.STRING
       },
       city: {
