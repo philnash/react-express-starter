@@ -8,17 +8,17 @@ const userRouter = express.Router()
 // const bcrypt = require ('bcrypt')
 // const cookie = require('cookie')
 
-const db = require('../db/models')
-const { user } = db
+// const db = require('../db/models')
+// const { user } = db
 
 //Middleware
 
-
+//Use this path to test your connection in Postman localhost:3001/user
 userRouter.get('/', (req, res)=>{
     res.send('userRouter is working')
 })
 
-//The below path is /user/health
+//The below path is .../user/health
 userRouter.get('/health', async(req, res)=> {
     res.send ({
         statusCode:200, 
