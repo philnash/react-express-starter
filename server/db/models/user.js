@@ -30,15 +30,7 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
         type: DataTypes.INTEGER
       },
-      createdAt: {
-        allowNull: false,
-        type: DataTypes.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: DataTypes.DATE
-      },
-      userrole: {
+        userrole: {
         allowNull: true,
         defaultValue: 'Customer',
         type: DataTypes.STRING
@@ -62,14 +54,19 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING
       },
       hashedPassword: {
-        type:DataTypes.STRING
-        // the next line can be used to define the pw parameters. What do we want them to be? 
-        // is: /^[a-z]+$/i
+        type:DataTypes.STRING,
+        set(value) {
+          // Sam can you update this next line with the hashed password? 
+          this.setDataValue('hashedPassword', hash(value));
+          // the next line can be used to define the pw parameters. What do we want them to be? 
+          // is: /^[a-z]+$/i
+        }
     }},
     {
       sequelize,
       modelName: 'user',
-      tableName: 'users'
+      tableName: 'users', 
+      timestamps: false
     }
   );
   return user;

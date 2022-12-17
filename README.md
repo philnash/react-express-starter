@@ -37,6 +37,14 @@ The node modules and package-lock.json files are created and stored locally when
 
    The React application will run on port 3000 and the server port 3001.
 8. Add the tables to your database. From the server folder, run sequelize db:migrate
+        *If there are errors, to undo migration run npx sequelize-cli db:migrate:undo:all 
+9. Add the seed data run npx sequelize-cli db:seed:all
+                *If there are problems, undo the seed with the command npx sequelize-cli db:seed:undo
+                *to undo only a specific seed use the command npx sequelize-cli db:seed:undo --seed name-of-seed-as-in-data
+10. Open the Postman app and check your routes: 
+        a. localhost:3001 should res: Hello, Firestarters
+        b. .../user should res: userRouter is working
+        c. ../user/health shoud res: userRouter is healthy
 
 # Getting Started with Create React App
 
