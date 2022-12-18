@@ -5,9 +5,6 @@ const { Sequelize, DataTypes, Model } = require ('sequelize');
 const order = require("./order");
 const user = require("./user");
 
-const {
-  Model
-} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class payment_method extends Model {
     /**

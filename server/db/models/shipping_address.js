@@ -5,9 +5,6 @@ const sequelize = new Sequelize(process.env.PG_URI)
 const user = require("./user");
 const order = require("./order");
 
-const {
-  Model
-} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class shipping_address extends Model {
     /**
