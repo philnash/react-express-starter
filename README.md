@@ -22,7 +22,7 @@ The node modules and package-lock.json files are created and stored locally when
 4. a. Create a .env file in the root folder. Add this information to your .env file:
         # Frontend
 REACT_APP_SERVER_URL=http://localhost/3000/
-PORT=3000
+        BE_PORT=3001
         use_env_variable=(put your PG_URI here)
         PG_URI= paste your link here
         DB_USERNAME=enter your username here, typically it is postgres
