@@ -3,9 +3,6 @@
 // const sequelize = new Sequelize(process.env.PG_URI)
 const order = require("./order");
 
-const {
-  Model
-} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class inventory extends Model {
     /**

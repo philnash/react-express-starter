@@ -9,9 +9,6 @@ const shipping_address = require("./shipping_address");
 const payment_method = require("./payment_method");
 const billing = require("./billing");
 
-const {
-  Model
-} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class order extends Model {
     /**
@@ -23,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       user,
       payment_method, 
       billing, 
-      shipping_address}) {
+      shipping_address }) {
         {
           order.belongsTo(user, {
              as: 'userid',foreignKey: 'id'
