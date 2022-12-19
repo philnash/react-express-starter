@@ -73,24 +73,6 @@
   max-height: 200px;
   padding: 5px;
   border-radius: 30px;;
-  /* grid: repeat(3, 80px) / auto-flow; */
-  /* flex-wrap: wrap; */
-}
-
-/* img {
-  border-radius: 60px;
-} */
-
-.navbar-main {
-  /* display: inline-flexbox; */
-  /* position: -webkit-sticky; */
-  color:#D00000;
-  margin: .25rem;
-  size-adjust: 5rem;
-  size: 3rem;
-  padding: 1.5rem;
-  align-items: center;
-  flex: 1 30px;
 }
 
 .footer {
@@ -105,6 +87,17 @@
   background-color: rgb(174, 174, 174);
 }
 
+.navbar-main {
+  /* display: inline-flexbox; */
+  /* position: -webkit-sticky; */
+  color:#D00000;
+  margin: .25rem;
+  size-adjust: 5rem;
+  size: 3rem;
+  padding: 1.5rem;
+  align-items: center;
+  flex: 1 30px;
+}
 @media screen and (min-width: 768px) {
   .menu-btn {
     visibility: hidden;

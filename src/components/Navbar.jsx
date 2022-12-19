@@ -12,7 +12,7 @@ function Navigation() {
     <span>
       <Navbar fixed="top" expand="lg">
         {/* <span className="menu-btn__burger"></span> */}
-        <Container>
+        <Container className="navbar-main">
           <Nav>
             <NavLink  href="/home" to="./pages/home">HOME
               {/* <i className="fa-solid fa-house"></i> */}
