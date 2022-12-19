@@ -1,4 +1,4 @@
-function CreateUser(){
+function CreateUserForm(){
     return (
       <div>
         <h2> CreateUser Component </h2>
@@ -6,6 +6,8 @@ function CreateUser(){
     );
   };
   
-  export default CreateUser
+  export default CreateUserForm
 ;
+
+
   

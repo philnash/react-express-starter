@@ -9,7 +9,7 @@ module.exports = {
         {
           userrole: "Admin",
           username: "mgarvey",
-          firstname: "Margaret",
+          firstname: "Marlene",
           lastname: "Garvey",
           email: "email@email.com",
           hashedPassword: "123456",

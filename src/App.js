@@ -2,7 +2,7 @@ import * as React from "react";
 import { Component } from "react";
 import "../src/css/scss/main.css";
 import "../src/css/scss/main.css.map";
-import Navigation from "./components/Navbar";
+import Navigation from "./components/Navbar.jsx";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
@@ -12,6 +12,7 @@ import CheckoutPage from "./pages/CheckoutPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import Error404 from "./Error404";
 import Login from "./components/Login"
+import CreateUserForm from "./components/CreateUserForm";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -44,6 +45,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <body>
         <header className="App-header">
           <Navigation />
           <br />
@@ -66,8 +68,14 @@ class App extends Component {
             </Routes>
           </BrowserRouter>
           <br/>
-          <Footer />
+          
         </header>
+        
+        
+        </body>
+        <footer>
+        <Footer />
+        </footer>
       </div>
     );
   }

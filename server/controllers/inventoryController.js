@@ -1,14 +1,14 @@
-import { db } from '../models'
-const router = require('express').Router()
+const db = require('../config/database')
+const inventoryRouter = require('express').Router()
 
-const { inventory } = db
+// const { inventory } = db
 
-router.get('/', async(res, req) => {
+inventoryRouter.get('/', async(res, req) => {
     const productid = Number(req.params.productid) 
     db.productid.findAll({ where: { productid: productid } })
 })
 
-router.put('/', async(res, req) => {
+inventoryRouter.put('/', async(res, req) => {
     
     const { productid } = req.body;
   
