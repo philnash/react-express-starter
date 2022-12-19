@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
 import { Nav, NavLink, Navbar } from "react-bootstrap";
-import Container from "react-bootstrap/Container";
-import NavDropdown from "react-bootstrap/NavDropdown";
+// import Container from "react-bootstrap/Container";
+// import NavDropdown from "react-bootstrap/NavDropdown";
 // import { LinkContainer } from "react-router-bootstrap";
 import '../css/scss/main.css'
 // import { toggleMenu } from './main'
 
 function Navigation() {
   return (
-    
-    <Navbar>
+    <div className="main-navbar" id='Navbar'>
+
+    <Navbar className='navbar'>
       <span className="menu-btn__burger"></span>
       <Nav className="nav">
         
@@ -43,8 +44,7 @@ function Navigation() {
         </Navbar>
       </Nav>
     </Navbar>
-
-    
+    </div>
   );
 }
 

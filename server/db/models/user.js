@@ -3,18 +3,10 @@
 const { DataTypes, Model, Association, ForeignKey, Sequelize } = require('sequelize');
 const sequelize = require('sequelize')
 
-// const { DataTypes } = require('sequelize');
-// const DataTypes = new Sequelize(
-//   process.env.PG_URI
-//   'postgres://postgres:password@localhost:5432/firestarter'
-// );
-
 const order = require("./order");
 const shipping_address = require("./shipping_address");
 const billing = require("./billing");
 const payment_method = require("./payment_method");
-
-// const queryInterface = DataTypes.getQueryInterface()
 
 //Model
 module.export = (sequelize, DataTypes) => {
@@ -54,18 +46,5 @@ User.init(
     modelName: "User",
     tableName: "users",
     timestamps: false,
-  }
-);
-//   return user;
-// }
-// )
-// module.exports = (DataTypes, DataTypes) => {
-// class User extends Model {
-//
-// }
-// }
-
-// User.init(
-
-// return User;
+  });
 };

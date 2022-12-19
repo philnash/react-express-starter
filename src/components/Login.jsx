@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function Login(){
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [hashedPassword, setPassword] = useState("");
   const handleSubmit = async (event) => {
     event.preventDefault();
   // const loginResponse = await fetch("/login", {
@@ -22,7 +22,7 @@ function Login(){
   //   console.error("Error logging in:", loginData.error);
   // }
     console.log(email);
-    console.log(password);
+    console.log(hashedPassword);
   }
 
     return (
@@ -46,7 +46,7 @@ function Login(){
             <label>Password</label>
             <input
               type="current-password"
-              name="password"
+              name="hashedPassword"
               placeholder="Enter Your Password Here"
               onChange={(event) => {
                 setPassword(event.target.value);
@@ -57,9 +57,7 @@ function Login(){
           </form>
         </div>
         <br></br>
-        <h2>
-          Don't have an account? <strong><a href="./createuser">Sign Up Here</a></strong>
-        </h2>
+        
       </header>
     </div>
     );

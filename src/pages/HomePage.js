@@ -5,26 +5,21 @@ import ShoppingCart from "../components/ShoppingCart";
 
 function HomePage() {
   return (
-    <main>
-      <div className="home">
-        <h2>Welcome to Our Site!</h2>
-        <h1 className="home__name">
-          THE 1 <span className="home__name--last">Fire Starter</span>
-        </h1>
-        <h2>Light Up Your Life</h2>
-        
-        <hr/>
-        <br/>
-        <ShoppingCart />
-      
-      </div>
+    <div className="home">
+
+      <main>
+        <Hero />
+        {/* Use the Hero component to style this area         */}
+        <hr />
+        <br />
+      </main>
       <div>
-        <br/>
-        <aside>
-          <Hero />
+        <br />
+        <aside className="shoppingcartaside">
+          <ShoppingCart />
         </aside>
       </div>
-    </main>
+    </div>
   );
 }
 

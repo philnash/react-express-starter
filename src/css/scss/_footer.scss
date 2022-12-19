@@ -1,9 +1,14 @@
 .footer {
-    font-size: 1rem;
     position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 1rem;
+    align-items: flex-start;
     bottom: 0.4rem;
     right: 1rem;
     text-align: right;
     padding: 1rem;
     color: set-text-color($primary-color);
+    margin-top: 10px;
+    border-top: 3px solid black;
 }

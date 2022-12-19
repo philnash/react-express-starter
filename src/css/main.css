@@ -5,8 +5,8 @@
 }
 
 .home {
-  height: 100%;
-  padding-top: 40vh;
+  height: 90%;
+  padding-top: 30vh;
   overflow: hidden;
   align-items: center;
   text-align: center;
@@ -33,6 +33,7 @@
   width: 28px;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
+  border-radius: 2px;
 }
 .menu-btn__burger {
   position: absolute;
@@ -65,12 +66,27 @@
   transform: rotate(720deg);
   background: transparent;
 }
+.product-gallery{
+  max-height: 200px;
+  padding: 5px;
+  border-radius: 2px;;
+  /* grid: repeat(3, 80px) / auto-flow; */
+  /* flex-wrap: wrap; */
+}
 
-.Navbar {
+img {
+  border-radius: 5px;
+}
+
+.Navbar, #main-navbar {
+  display: inline-flexbox;
   position: -webkit-sticky;
   position: sticky;
   margin: 10px;
   padding: 1.5rem;
+  align-items: center;
+  flex: 1 30px;
+
 }
 
 .footer {
@@ -81,6 +97,7 @@
   text-align: right;
   padding: 1rem;
   color: #f48c06;
+  background-color: rgb(174, 174, 174);
 }
 
 @media screen and (min-width: 768px) {
@@ -125,6 +142,8 @@ button {
   text-align: center;
   white-space: nowrap;
   cursor: pointer;
+  padding: 3px;
+  margin: 3px;
   touch-action: manipulation;
   outline: none;
   -webkit-user-select: none;
@@ -136,7 +155,13 @@ button {
 button:disabled {
   cursor: not-allowed;
 }
-
+#component-main-div{
+  max-height: 80;
+  scroll-behavior: auto;
+}
+#product-gallery{
+  display: block flex;
+}
 h1, h2, h3 {
   font-weight: 700;
 }
