@@ -23,7 +23,7 @@
             top: -8px;
             width: 28px;
             height: 3px;
-            background: set-text-color($primary-color);
+            // background: set-text-color($primary-color);
             @include transition-ease;
         }
 
@@ -33,13 +33,13 @@
             top: 8px;
             width: 20px;
             height: 3px;
-            background: set-text-color($primary-color);
+            // background: set-text-color($primary-color);
             @include transition-ease; 
         }
 
         &.open {
             transform: rotate(720deg);
-            background: transparent;
+            // background: transparent;
             
         }
     }

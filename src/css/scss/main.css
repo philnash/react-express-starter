@@ -1,26 +1,52 @@
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  max-width: 100%;
+  margin: 4px;
+  padding: 4px;
+  align-items: center;
+  /* align-content: space-evenly; */
+  /* align-content: stretch; */
+}
+.shopping-cart{
+  border: 1px solid #370617;
+  border-radius: 20px;
+  display: flex;
 }
 
+.product-gallery{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+  /* border-radius: 30px; */
+}
+.product-image{
+  vertical-align: middle;
+  margin-top: 8px;
+  border-radius: 60px;
+  width: 15vw;
+}
+.card-image{
+  width: 125px;
+  border-radius: 40px;
+  float: left;
+}
 .home {
-  height: 90%;
-  padding-top: 30vh;
-  overflow: hidden;
+  max-height: 90%;
+  padding-top: 10vh;
+  /* overflow: hidden; */
   align-items: center;
   text-align: center;
-  background: linear-gradient(to right, rgba(106, 4, 15, 0.9), rgba(106, 4, 15, 0.3)), url("./flame.png") center top;
-  background-size: cover;
+  /* background: linear-gradient(to right, rgba(106, 4, 15, 0.9), rgba(106, 4, 15, 0.3)), url("./flame.png") center top;
+  background-size: cover; */
 }
 .home__name {
   font-size: 5rem;
-  padding: 1rem;
+  padding: 3rem;
   margin-bottom: 1rem;
   border-bottom: 2px solid #f48c06;
 }
 .home__name--last {
-  color: #370617;
+  color: #E85D04;
   font-weight: 800;
 }
 
@@ -40,7 +66,7 @@
   top: 0.5rem;
   width: 28px;
   height: 3px;
-  background: #f48c06;
+  /* background: #f48c06; */
   transition: all 0.5s ease-in-out;
 }
 .menu-btn__burger::before {
@@ -63,19 +89,12 @@
 }
 .menu-btn__burger.open {
   transform: rotate(720deg);
-  background: transparent;
-}
-
-.Navbar {
-  position: -webkit-sticky;
-  position: sticky;
-  margin: 10px;
-
+  /* background: transparent; */
 }
 
 body {
-  background: #6a040f;
-  color: #f48c06;
+  /* background: #6a040f; */
+  color: #9D0208;
   height: 100vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1;
@@ -91,12 +110,12 @@ a {
 }
 
 .text-secondary {
-  color: #370617;
+  color: #E85D04;
 }
 
 header {
   position: fixed;
-  z-index: 2;
+  /* z-index: 2; */
   width: 100%;
   padding: 1rem;
 }
@@ -119,11 +138,11 @@ main .social-icons a:hover {
 }
 
 footer {
-  font-size: 1rem;
-  position: fixed;
+  font-size: .75rem;
+  /* position: fixed; */
   bottom: 0.4rem;
   right: 1rem;
   text-align: right;
   padding: 1rem;
-  color: #f48c06;
+  color: #9D0208;
 }/*# sourceMappingURL=main.css.map */

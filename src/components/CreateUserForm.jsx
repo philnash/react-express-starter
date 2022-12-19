@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 const CreateUserForm = () => {
   const [username, setusername] = useState("");
-  const [firstname, setName] = useState("");
+  const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [hashedPassword, setPassword] = useState("");
@@ -14,67 +14,73 @@ const CreateUserForm = () => {
   };
 
   return (
-    <div id="createuserform" className="createuserform">
-      <h2>
-        Don't have an account?{" "}
-        <strong>
-          <a href="./createuser">Sign Up Here</a>
-        </strong>
-      </h2>
-      <Form>
-        <form onSubmit={handleSubmit}>
-          <br />
-          <label>
-            First Name:
-            <input
-              type="text"
-              value={firstname}
-              onChange={(event) => setName(event.target.value)}
+    <div className="createuserform">
+      <h1>Create An Account</h1>
+      <br />
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className="mb-3" controlId="formBasicFirstName">
+          <Form.Label>First Name </Form.Label>
+          <Form.Control
+            type="text"
+            ref="firstname"
+            value={firstname}
+            onChange={(event) => setFirstname(event.target.value)}
+            placeholder="First Name"
             />
-          </label>
-          <br />
-          <label>
-            Last Name:
-            <input
-              type="text"
-              value={lastname}
-              onChange={(event) => setLastname(event.target.value)}
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicLastName">
+          <Form.Label>Last Name </Form.Label>
+          <Form.Control
+            type="text"
+            ref="lastname"
+            value={lastname}
+            onChange={(event) => setLastname(event.target.value)}
+            placeholder="Last Name"
             />
-          </label>
-          <br />
-          <br />
-          <label>
-            Username:
-            <input
-              type="text"
-              placeholder="Enter a username here"
-              value={username}
-              onChange={(event) => setusername(event.target.value)}
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicUsername">
+          <Form.Label>Username </Form.Label>
+          <Form.Control
+            type="text"
+            value={username}
+            ref="username"
+            onChange={(event) => setusername(event.target.value)}
+            placeholder="Choose a username"
             />
-          </label>
-          <br />
-          <label>
-            Email:
-            <input
-              type="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address </Form.Label>
+          <Form.Control
+            type="email"
+            value={email}
+            ref="email"
+            onChange={(event) => setEmail(event.target.value)}
+            placeholder="Enter email"
             />
-          </label>
-          <br />
-          <br />
-          <label>
-            Password:
-            <input
-              type="password"
-              value={hashedPassword}
-              onChange={(event) => setPassword(event.target.value)}
-            />
-          </label>
-          <br />
-          <br />
-          <input type="submit" value="Create user" />
-        </form>
+          <Form.Text className="text-muted">
+            We'll never share your email with anyone else.
+          </Form.Text>
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formPassword">
+          <Form.Label htmlFor="inputPassword5">Password</Form.Label>
+          <Form.Control
+            type="password"
+            ref="hashedPassword"
+            value={hashedPassword}
+            // id="inputPassword5"
+            onChange={(event) => setPassword(event.target.value)}
+            placeholder="Choose a username"
+            aria-describedby="passwordHelpBlock"
+          />
+          <Form.Text id="passwordHelpBlock" muted>
+            Your password must be 8-20 characters long, contain letters and
+            numbers, and must not contain spaces, special characters, or emoji.
+          </Form.Text>
+        </Form.Group>
+        <Button variant="primary" type="submit" value="create user">
+          Create User
+        </Button>
       </Form>
     </div>
   );

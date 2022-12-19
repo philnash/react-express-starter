@@ -1,86 +1,55 @@
 import React, { useEffect } from "react";
 import { Nav, NavLink, Navbar } from "react-bootstrap";
-// import Container from "react-bootstrap/Container";
+import Container from "react-bootstrap/Container";
 // import NavDropdown from "react-bootstrap/NavDropdown";
 // import { LinkContainer } from "react-router-bootstrap";
-import '../css/scss/main.css'
+import "../css/scss/main.css";
 // import { toggleMenu } from './main'
 
 function Navigation() {
   return (
-    <div className="main-navbar" id='Navbar'>
+    <div className="navbar-main" expand="bg">
+    <span>
+      <Navbar fixed="top" expand="lg">
+        {/* <span className="menu-btn__burger"></span> */}
+        <Container>
+          {/* <Navbar.Brand href="/home">HOME</Navbar.Brand> */}
+          <Nav>
+            <NavLink  href="/home" to="./pages/home">HOME
+              {/* <i className="fa-solid fa-house"></i> */}
+            </NavLink>
+            <NavLink href="/products" to="./pages/products">
+              PRODUCTS
+            </NavLink>
+            <NavLink href="/aboutus" to="./pages/about_us">
+              ABOUT US
+            </NavLink>
+            <NavLink href="/profile" to="./profile">
+              ACCOUNT
+            </NavLink>
 
-    <Navbar className='navbar'>
-      <span className="menu-btn__burger"></span>
-      <Nav className="nav">
-        
-        <Navbar>
-          <NavLink href="/home" to="./pages/home">
-            <i className="fa-solid fa-house"></i>
-          </NavLink>
-          <NavLink href="/products" to="./pages/products">
-            Products
-          </NavLink>
-          <NavLink href="/aboutus" to="./pages/about_us">
-            About Us
-          </NavLink>
-        
-          <NavLink href="/profile">
-            <i className="fa-regular fa-circle-user"></i>
-          </NavLink>
-          <button>
+            {/* <NavLink href="/profile">
+              <i className="fa-regular fa-circle-user"></i>
+            </NavLink> */}
+            {/* <button>
             <NavLink href="/login" to="./pages/login">
-              Log In
+            Log In
             </NavLink>
-          </button>
-          <button>
+            </button>
+            <button>
             <NavLink href="/createuser" to="./pages/createuser">
-              Create an Account
+            Create an Account
             </NavLink>
-          </button>
-          <NavLink href="/checkout">
-            <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-          </NavLink>
-        </Navbar>
-      </Nav>
-    </Navbar>
+          </button> */}
+            <NavLink href="/checkout" className="shoppingcarticon">
+              <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+            </NavLink>
+          </Nav>
+        </Container>
+      </Navbar>
+          </span>
     </div>
   );
 }
 
 export default Navigation;
-
-// function Navigation () {
-//   return (
-//     <><div className="menu-btn">
-//     <span className="menu-btn__burger"></span>
-//   </div>
-//     <nav className="nav">
-//         <ul className="menu-nav">
-//           <li className="menu-nav__item">
-//             <a href="HomePage.jsx"
-//               className="menu-nav__link">
-//               HOME
-//             </a>
-//           </li>
-//           <li class="menu-nav__item">
-//                     <a href="./pages/about_us" class="menu-nav__link">
-//                         About Us
-//                     </a>
-//                 </li>
-//                 <li class="menu-nav__item">
-//                     <a href="./pages/products" class="menu-nav__link">
-//                        Products
-//                     </a>
-//                 </li>
-//                 <li class="menu-nav__item">
-//                     <a href="./pages/login" class="menu-nav__link">
-//                         Log In
-//                     </a>
-//                 </li>
-//             </ul>
-//         </nav></>
-//   )
-// }
-
-// export default Navigation;

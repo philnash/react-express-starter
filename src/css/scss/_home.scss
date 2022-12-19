@@ -1,7 +1,7 @@
 .home {
     height: 90%;
-    padding-top: 30vh;
-    overflow: hidden;
+    // padding-top: 10vh;
+    // overflow: hidden;
     align-items: center;
     text-align: center;
     background: 
@@ -15,7 +15,7 @@
     background-size: cover;
 
 &__name {
-    font-size: 5rem;
+    font-size: 3rem;
     padding: 1rem;
     margin-bottom: 1rem;
     border-bottom: 2px solid set-text-color($primary-color);

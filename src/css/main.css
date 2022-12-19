@@ -4,15 +4,6 @@
   padding: 0;
 }
 
-.home {
-  height: 90%;
-  padding-top: 30vh;
-  overflow: hidden;
-  align-items: center;
-  text-align: center;
-  background: linear-gradient(to right, rgba(106, 4, 15, 0.9), rgba(106, 4, 15, 0.3)), url("./flame.png") center top;
-  background-size: cover;
-}
 .home__name {
   font-size: 5rem;
   padding: 1rem;
@@ -69,34 +60,36 @@
 .product-gallery{
   max-height: 200px;
   padding: 5px;
-  border-radius: 2px;;
+  border-radius: 30px;;
   /* grid: repeat(3, 80px) / auto-flow; */
   /* flex-wrap: wrap; */
 }
 
-img {
-  border-radius: 5px;
-}
+/* img {
+  border-radius: 60px;
+} */
 
-.Navbar, #main-navbar {
-  display: inline-flexbox;
-  position: -webkit-sticky;
-  position: sticky;
-  margin: 10px;
+.navbar-main {
+  /* display: inline-flexbox; */
+  /* position: -webkit-sticky; */
+  color:#D00000;
+  margin: .25rem;
+  size-adjust: 5rem;
+  size: 3rem;
   padding: 1.5rem;
   align-items: center;
   flex: 1 30px;
-
 }
 
 .footer {
   font-size: 1rem;
-  position: fixed;
+  /* position: fixed;
   bottom: 0.4rem;
-  right: 1rem;
+  right: 1rem; */
   text-align: right;
   padding: 1rem;
-  color: #f48c06;
+  margin: 4px;
+  color: #6A040F;
   background-color: rgb(174, 174, 174);
 }
 
@@ -111,25 +104,35 @@ img {
     display: block;
     transform: translateY(0);
     height: 100%;
-    background: transparent;
+    /* background: transparent; */
     text-align: right;
   }
   .nav .menu-nav__item {
     display: inline;
-    padding-right: 1.5rem;
+    /* padding-right: 1.5rem; */
   }
   .nav .menu-nav__link {
     font-size: 1.5rem;
   }
 }
+.product-gallery{
+  display: inline-block;
+}
+.card-image{
+  width: 100px;
+  float: left;
+  padding: 8px;
+}
 body {
-  background: #6a040f;
-  color: #f48c06;
+  /* background: #6a040f; */
+  color: #6A040F;
   height: 100vh;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   line-height: 1;
 }
-
+Form{
+  display: block;
+}
 button {
   display: inline-flex;
   justify-content: center;
@@ -167,7 +170,7 @@ h1, h2, h3 {
 }
 
 a {
-  color: #f48c06;
+  color: #6A040F;
   text-decoration: none;
 }
 
@@ -176,7 +179,7 @@ a {
 }
 
 header {
-  position: fixed;
+  /* position: fixed; */
   z-index: 2;
   width: 100%;
   padding: 1rem;

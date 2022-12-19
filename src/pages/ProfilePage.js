@@ -3,17 +3,10 @@ import Login from "../components/Login";
 
 function ProfilePage() {
   return (
-    <div>
-      {/* <main>
-        <h1>ProfilePage</h1>
-        <br/>
-      </main>
-      <button>Log In</button> */}
-      {/* <button>Create User</button> */}
-      
-      <CreateUserForm />
+    <div>    
       <Login />
-      <p>or</p>
+      <h2>or</h2>
+      <CreateUserForm />
     </div>
   );
 }

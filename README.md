@@ -32,6 +32,9 @@ Cody Cork
 * SQL
 * Node
 * Bcrypt
+* Sequelize
+* PostgresQL
+* Cors
 
 # React application with Express server
 

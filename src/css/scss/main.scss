@@ -8,19 +8,26 @@
 
 
 
+#root {
+    align-items: center;
+    text-align: center;
+}
+
 body {
-    background: $primary-color;
+    // background: $primary-color;
     color: set-text-color($primary-color);
     height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1;
+    align-self: center;
+    align-content: center;
 }
 
 button {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 30px;
     line-height: normal;
     font-weight: 400;
     font-style: normal;
@@ -58,6 +65,11 @@ header {
     z-index: 2;
     width: 100%;
     padding: 1rem;
+}
+
+.shoppingcarticon{
+    position: absolute;
+    right: 0;
 }
 
 main {

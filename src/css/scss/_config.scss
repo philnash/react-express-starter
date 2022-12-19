@@ -1,4 +1,4 @@
-$primary-color: #6a040f;
+$primary-color: #6A040F;
 $secondary-color: #370617;
 
 * {
@@ -11,12 +11,12 @@ $secondary-color: #370617;
     transition: all 0.5s ease-in-out;
 }
 
-@function set-text-color($color) {
+@function set-text-color($primary-color) {
     @if (lightness($color) > 40%) {
-        @return #03071e;
+        @return #6A040F;
     }
     @else {
-        @return #f48c06;
+        @return #6A040F;
     }
 }
 

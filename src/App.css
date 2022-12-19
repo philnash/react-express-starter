@@ -1,18 +1,37 @@
 * {
   box-sizing: border-box;
-  margin: 10;
-  padding: 0;
+  /* margin: 1; */
+  padding: 4px;
 }
-
-.app {
+.App {
   height: 100%;
-  padding-top: 40vh;
+  padding-top: 5vh;
   overflow: hidden;
   align-items: center;
+  align-self: center;
   text-align: center;
   background: linear-gradient(to right, rgba(106, 4, 15, 0.9), rgba(106, 4, 15, 0.3)), url("flame.png") center top;
   background-size: cover;
 }
+body {
+  /* background: #6a040f; */
+  background: white;
+  color: #6A040F;
+  height: 100vh;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1;
+  align-content: center;
+}
+.navbar-main  {
+  position: fixed;
+  /* z-index: 2; */
+  /* width: 100%; */
+  padding: .5rem;
+  color:#03071E;
+  align-content: center;
+  align-items: center;
+
+}  
 .app__name {
   font-size: 5rem;
   padding: 1rem;
@@ -26,11 +45,11 @@
 
 .navbar-btn {
   position: absolute;
-  z-index: 1;
-  right: 1rem;
-  top: 1rem;
-  height: 20px;
-  width: 28px;
+  /* z-index: 1; */
+  /* right: 1rem; */
+  /* top: 1rem; */
+  /* height: 20px; */
+  /* width: 28px; */
   cursor: pointer;
   transition: all 0.5s ease-in-out;
 }
@@ -66,43 +85,30 @@
   background: transparent;
 }
 
-body {
-  background: #6a040f;
-  color: #f48c06;
-  height: 100vh;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1;
-}
 
 h1, h2, h3 {
   font-weight: 700;
 }
 
 a {
-  color: #f48c06;
+  color: #370617;
   text-decoration: none;
 }
 
 .text-secondary {
-  color: #370617;
+  color: #03071E;
 }
 
 header {
   position: fixed;
-  z-index: 2;
-  width: 100%;
-  padding: 1rem;
-}
-Nav {
-  position: fixed;
-  z-index: 2;
+  /* z-index: 2; */
   width: 100%;
   padding: 1rem;
 }
 
 main {
-  height: 100%;
-  width: 100%;
+  max-height: 90%;
+  /* width: 100%; */
 }
 main .social-icons {
   position: fixed;
@@ -119,9 +125,9 @@ main .social-icons a:hover {
 
 footer {
   font-size: 1rem;
-  position: fixed;
-  bottom: 0.4rem;
-  right: 1rem;
+  /* position: fixed; */
+  /* bottom: 0.4rem;
+  right: 1rem; */
   text-align: right;
   padding: 1rem;
   color: #f48c06;
