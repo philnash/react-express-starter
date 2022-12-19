@@ -13,7 +13,6 @@ function Navigation() {
       <Navbar fixed="top" expand="lg">
         {/* <span className="menu-btn__burger"></span> */}
         <Container>
-          {/* <Navbar.Brand href="/home">HOME</Navbar.Brand> */}
           <Nav>
             <NavLink  href="/home" to="./pages/home">HOME
               {/* <i className="fa-solid fa-house"></i> */}
@@ -27,20 +26,6 @@ function Navigation() {
             <NavLink href="/profile" to="./profile">
               ACCOUNT
             </NavLink>
-
-            {/* <NavLink href="/profile">
-              <i className="fa-regular fa-circle-user"></i>
-            </NavLink> */}
-            {/* <button>
-            <NavLink href="/login" to="./pages/login">
-            Log In
-            </NavLink>
-            </button>
-            <button>
-            <NavLink href="/createuser" to="./pages/createuser">
-            Create an Account
-            </NavLink>
-          </button> */}
             <NavLink href="/checkout" className="shoppingcarticon">
               <i className="fa fa-shopping-cart" aria-hidden="true"></i>
             </NavLink>

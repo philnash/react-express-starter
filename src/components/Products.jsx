@@ -1,13 +1,12 @@
 // import { createContext } from "context";
-// import { useState } from "react";
+import { useState } from "react";
 import { Card } from "react-bootstrap";
 
 function Products() {
+  const [quantitypurchased, setQuantityPurchased] = useState("");
   const addToCart = async (event) => {
-    event.preventDefault();
+    await event.preventDefault();
   };
-  // const [quantitypurchased, setQuantityPurchased] = useState("");
-
   // const handleSubmit = (event) => {
   // event.preventDefault();
   // Send the form data to the server using an HTTP request
@@ -15,7 +14,7 @@ function Products() {
 
   return (
     <div>
-      <Card style={{ width: "90%" }}>
+      <Card className="product-card" style={{ width: "90%" }}>
         <Card.Header as="h5">Featured </Card.Header>
         <Card.Body>
           <Card.Title>THE 1 Firestarter</Card.Title>
@@ -32,34 +31,30 @@ function Products() {
               </Card.Body>
           <div className="product-gallery">
             <div className="product-image">
-              <img
-                // width="100"
-                // height="100"
-                src="ring.jpeg"
-                alt="fire starter"
-              />
+              <img src="ring.jpeg" alt="fire starter"/>
             </div>
             <div className="product-image">
-              <img
-                // width="100"
-                // height="100"
-                src="ring2.jpeg"
-                alt="fire starter"
-              />
+              <img src="ring2.jpeg"alt="fire starter"/>
+            </div>
+            <div className="product-image">
+              <img src="package.jpeg"alt="fire starter"/>
             </div>
           </div>
       <form>
+        <p>$1.50 each</p>
         <label>Qty</label>
         <input
           type="number"
           name="quantitypurchased"
+          value={quantitypurchased}
           placeholder="1, 2..."
           onChange={(event) => {
             addToCart(event.target.value);
           }}
-        />
+          />
         <button onSubmit={addToCart}>Add To Cart</button>
       </form>
+          <hr/>
           <Card.Link href="https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/fire.html">
             Click here to read more about fire safety from American Red Cross
           </Card.Link>

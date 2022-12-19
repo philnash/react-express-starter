@@ -2,10 +2,10 @@ import ShoppingCart from '../components/ShoppingCart'
 
 function CheckoutPage() {
     return (
-      <main>
-        <h1>CHECKOUT PAGE</h1>
+      <div className='checkout-page'>
+        <h1>CHECKOUT</h1>
         <ShoppingCart />
-      </main>
+      </div>
     );
   }
   

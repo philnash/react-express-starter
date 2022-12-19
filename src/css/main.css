@@ -14,7 +14,19 @@
   color: #370617;
   font-weight: 800;
 }
-
+.product-card{
+  border: 1px solid #370617;
+}
+.checkout-page .checkout-button{
+  display: none;
+}
+.checkout-button:hover + .hide{
+  display: block;
+  color: #370617;
+}
+.hide {
+  display: none;
+}
 .menu-btn {
   position: absolute;
   z-index: 1;

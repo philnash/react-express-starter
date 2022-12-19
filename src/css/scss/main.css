@@ -12,7 +12,16 @@
   border-radius: 20px;
   display: flex;
 }
-
+.delete-btn{
+  max-width: 5px;
+  max-height: 5px;
+  font-size: 1px;
+  float: left;
+}
+.product-card{
+  border: 1px solid #370617;
+  border-radius: 20px;
+}
 .product-gallery{
   display: flex;
   flex-wrap: wrap;
@@ -22,13 +31,19 @@
 .product-image{
   vertical-align: middle;
   margin-top: 8px;
-  border-radius: 60px;
+  /* border-radius: 60px; */
   width: 15vw;
 }
+.product-image :hover{
+  transform: scale(1.75);
+}
 .card-image{
-  width: 125px;
+  width: 20vw;
   border-radius: 40px;
   float: left;
+}
+.card-image :hover {
+  transform: scale(1.5);
 }
 .home {
   max-height: 90%;
