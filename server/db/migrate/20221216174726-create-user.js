@@ -27,15 +27,27 @@ module.exports = {
         type: Sequelize.STRING
       },
       email: {
-        allowNull: false, 
+        allowNull: false,
         isEmail: true,
         type: Sequelize.STRING
       },
       hashedPassword: {
-        type: Sequelize.STRING, 
+        type: Sequelize.STRING,
         // the next line can be used to define the pw parameters. What do we want them to be? 
         // is: /^[a-z]+$/i
       },
+
+      createdAt: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+
+      updatedAt: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+
+
       billingid: {
         foreignKey: true,
         allowNull: true,

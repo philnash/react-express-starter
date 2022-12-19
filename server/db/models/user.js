@@ -1,12 +1,12 @@
 const Sequelize = require('sequelize');
-const { Model, Association, ForeignKey } = require('sequelize');
+const { Model, Association, ForeignKey, DataTypes } = require('sequelize');
 const sequelize = new Sequelize(
   process.env.PG_URI
   // 'postgres://cre8ivesolutions:password@localhost:5432/firestarter'
   );
 
 const order = require("./order");
-const { Sequelize, Model, DataTypes, Association, ForeignKey  } = require('sequelize');
+
 const shipping_address = require('./shipping_address');
 const billing = require('./billing');
 const payment_method = require('./payment_method');
@@ -26,15 +26,17 @@ const User = sequelize.define(
     username: Sequelize.STRING,
     firstname: Sequelize.STRING,
     lastname: Sequelize.STRING,
-    email: Sequelize.STRING
+    email: Sequelize.STRING,
+    
     // hashedPassword: {
+    //   allowNull: true,
     //   type: Sequelize.STRING,
     //   set(password) {
-    //     Sam can you update this next line with the hashed password?
+    //     // Sam can you update this next line with the hashed password?
     //     this.setDataValue('hashedPassword', hash(password));
-      // },
+    //   },
     })
-//     , {
+//    ,  {
 //       sequelize,
 //       modelName: 'User',
 //       tableName: 'Users',

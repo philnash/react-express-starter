@@ -5,22 +5,22 @@ function Login(){
   const [password, setPassword] = useState("");
   const handleSubmit = async (event) => {
     event.preventDefault();
-  const loginResponse = await fetch("/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email, password}),
-  });
-  const loginData = await loginResponse.json();
-  // handle the reponse from the backend here
+  // const loginResponse = await fetch("/login", {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify({ email, password}),
+  // });
+  // const loginData = await loginResponse.json();
+  // // handle the reponse from the backend here
 
-  if (loginData.success) {
-    console.log("Successful login!");
-  }
-  else {
-    console.error("Error logging in:", loginData.error);
-  }
+  // if (loginData.success) {
+  //   console.log("Successful login!");
+  // }
+  // else {
+  //   console.error("Error logging in:", loginData.error);
+  // }
     console.log(email);
     console.log(password);
   }
@@ -29,7 +29,7 @@ function Login(){
       <div className="App">
       <header className="App-header">
         <div className="login-box">
-          <h1>Login</h1>
+          <h1>Log In</h1>
           <br></br>
           <br></br>
           <form onSubmit={handleSubmit}>
@@ -57,9 +57,9 @@ function Login(){
           </form>
         </div>
         <br></br>
-        <p className="para-2">
-          Don't have an account? <a href="./createuser">Sign Up Here</a>
-        </p>
+        <h2>
+          Don't have an account? <strong><a href="./createuser">Sign Up Here</a></strong>
+        </h2>
       </header>
     </div>
     );
