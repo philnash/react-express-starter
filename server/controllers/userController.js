@@ -1,8 +1,8 @@
-const express = require('express')
-const { Router } = express
-const router = express.Router()
-const { User } = require('../db/models/user')
-const db = require('../config/database')
+const express = require("express");
+const { Router } = express;
+const router = express.Router();
+const { users } = require("../db/models/user");
+const db = require("../config/database");
 
 //Middleware
 // const { hashSync } = require ('bcrypt')
@@ -10,28 +10,27 @@ const db = require('../config/database')
 // const cookie = require('cookie')
 
 //Use this path to test your connection in Postman localhost:3001/user
-router.get('/', (req, res)=>{
-    res.send('router is working')
-})
+router.get("/", (req, res) => {
+  res.send("router is working");
+});
 
 //The below path is .../user/health
-router.get('/health', async(req, res)=> {
-    res.send ({
-        statusCode:200, 
-        message: "router is healthy"
-})
-})
+router.get("/health", async (req, res) => {
+  res.send({
+    statusCode: 200,
+    message: "router is healthy",
+  });
+});
 //Tammy when you come back to this try using https://www.tcpdump.org/ or  wireshark to capture network traffic and see if the connection is being established and if there are any issues with the traffic
-router.get('/users', async (req, res) => {
-    try {
-        // Use the findAll() function to fetch all users
-        const users = await User.findAll();
-        res.json(users);
-      } catch (error) {
-        res.status(500).json({ message: 'Error getting users' });
-      }
-})
-
+router.get("/users", async (req, res) => {
+  try {
+    // Use the findAll() function to fetch all users
+    const users = await users.findAll();
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ message: "Error getting users" });
+  }
+});
 
 //addUser
 // router.post('/createuser', async (req, res) => {
@@ -66,8 +65,6 @@ router.get('/users', async (req, res) => {
 //         })
 // })
 
-
-
 //Find users
 // router.get('/', async (req, res) => {
 //     db.user.findOne({ attributes: ["username", "firstname", "lastname"], where: { email: req.query.email }, paranoid: false })
@@ -86,7 +83,7 @@ router.get('/users', async (req, res) => {
 
 //Update user info
 // router.put('/:userid', async (req, res) => {
-   
+
 //     const { userId, firstName, lastName, email, streetaddress, password, } = req.body;
 //     let passwordHash = hashSync(password);
 //     db.user.findOne({ where: { email: email }, paranoid: false })
@@ -95,7 +92,7 @@ router.get('/users', async (req, res) => {
 //                 throw new RequestError('User is not found', 409);
 //             }
 //             return db.user.update({
-//                 username: username ? username: user.username, 
+//                 username: username ? username: user.username,
 //                 firstname : firstnameirstname ? firstname : user.firstname,
 //                 lastname: lastname ? lastname : user.lastname,
 //                 password: password ? passwordHash : user.password,
@@ -117,27 +114,27 @@ router.get('/users', async (req, res) => {
 
 //login in the user
 // router.get('/',async (req, res) => {
-    // const {username,password}=req.body
-    // try{
-    //     const user = await UserModel.findOne({username: username})
+// const {username,password}=req.body
+// try{
+//     const user = await UserModel.findOne({username: username})
 
-    //     if(user)
-    //     {
-    //         const validity = await user.compare(password, user.password)
+//     if(user)
+//     {
+//         const validity = await user.compare(password, user.password)
 
-    //         validity? res.status(200).json(loginUser):res.status(400)
-    //     }
-    //     else{
-    //         res.status(404).json("Non existant user")
-    //     }
-    // }catch(error){
-    //     res.status(500).json({error})
-    // }
+//         validity? res.status(200).json(loginUser):res.status(400)
+//     }
+//     else{
+//         res.status(404).json("Non existant user")
+//     }
+// }catch(error){
+//     res.status(500).json({error})
+// }
 // })
 
-//Delete user 
+//Delete user
 // router.delete('/:userid', async (req, res, next) => {
-//     const userid = Number(req.params.userid) 
+//     const userid = Number(req.params.userid)
 //     db.user.findOne({ where: { userid: userid } })
 //         .then(data => {
 //             if (data) {
@@ -151,4 +148,4 @@ router.get('/users', async (req, res) => {
 //             next(err)
 //         })
 // })
-module.exports = router
+module.exports = router;

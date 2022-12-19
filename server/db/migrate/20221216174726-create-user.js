@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable('users', {
       id: {
         primaryKey: true,
         autoIncrement: true,
@@ -36,6 +36,14 @@ module.exports = {
         // the next line can be used to define the pw parameters. What do we want them to be? 
         // is: /^[a-z]+$/i
       },
+      createdAt: {
+        allowNull: true, 
+        type: Sequelize.STRING
+      },
+      updatedAt: {
+        allowNull: true, 
+        type: Sequelize.STRING
+      },
       billingid: {
         foreignKey: true,
         allowNull: true,
@@ -59,6 +67,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Users');
+    await queryInterface.dropTable('users');
   }
 };
