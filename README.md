@@ -1,5 +1,5 @@
 ## About This Project
-THE 1 Firestarter
+THE 1 Fire Starter
 
 We are creating a merchant site for a single product called THE 1 Fire Starter. This is a recycled product made in Wisconsin for use in campfires, wood stoves, and fireplaces. Right now the product is sold in local hardware stores and at campgrounds. We'd like to help this company expand their clientele and enable them to ship throughout the U.S.
 
@@ -19,9 +19,9 @@ Requirements:
 
 
 Created by:
-Tammy J Swierczynski
-Crystal Korth
-Sam Hughes
+Tammy J Swierczynski,
+Crystal Korth,
+Sam Hughes, &
 Cody Cork
 
 ### Tools and Libraries Used
