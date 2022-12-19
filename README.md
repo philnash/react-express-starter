@@ -1,15 +1,47 @@
+## About This Project
+THE 1 Firestarter
+
+We are creating a merchant site for a single product called THE 1 Fire Starter. This is a recycled product made in Wisconsin for use in campfires, wood stoves, and fireplaces. Right now the product is sold in local hardware stores and at campgrounds. We'd like to help this company expand their clientele and enable them to ship throughout the U.S.
+
+Important to us was creating a database for securing customer log in and shipping information. This is beneficial for both the company's records and the customer's experience.
+
+Requirements:
+* Feature user authentication
+* Effort must be spent on styling, appearance, and user experience
+* Must be deployed somewhere
+* Back-end uses Node and Express
+* Front-end uses React
+* Database has at least two tables (SQL) and support at least one type of database relationship 1:M or N:M
+* Uses ORM or ODM to interact with SQL database
+* Must run in a web browser
+* Site is responsive to screen sizes
+
+
+
+Created by:
+Tammy J Swierczynski
+Crystal Korth
+Sam Hughes
+Cody Cork
+
+### Tools and Libraries Used
+* React
+* Express
+* Bootstrap
+* Sass
+* SQL
+* Node
+* Bcrypt
+
 # React application with Express server
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). Then an Express server was added in the `server` directory. The server is proxied via the `proxy` key in `package.json`.
 
 ## Using this project
-##THE 1 Firestarter
 
-#Created by:
-Tammy J Swierczynski
-Crystal Korth
-Sam Hughes
-Cody Cork
+
+
+
 
 ### Notes RE: Node_modules and package-lock.json
 The node modules and package-lock.json should be placed it the .gitignore file and never pushed to the repository. However, since we will need to use the node modules to run the code, see below: 
@@ -130,7 +162,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 The [twilio branch](https://github.com/philnash/react-express-starter/tree/twilio) is a similar setup but also provides endpoints with basic [Access Tokens](https://www.twilio.com/docs/iam/access-tokens) for [Twilio Programmable Chat](https://www.twilio.com/docs/chat) and [Twilio Programmable Video](https://www.twilio.com/docs/video). You can use the project as a base for building React chat or video applications.
 
-## Our Project Inspiration
+## Outstanding Bugs and Room For Improvement
+* 
+
 
 ## Our Sources
 * [react-express-starter](https://github.com/philnash/react-express-starter)
