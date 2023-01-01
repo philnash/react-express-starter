@@ -2,28 +2,26 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 
-// const { Seqeulize, DataTypes }= require('sequelize');
 // this is the connection to the database using pguri
-const db = require('./config/database')
-
-const { users } = require('./db/models/user')
+const connect = require('./config/database')
 
 //Middleware
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
-const cors = require('cors')
+// const cors = require('cors');
+const router = require('./controllers/userController');
 
 //Testing the connection to the db
-db.authenticate()
+connect.authenticate()
 .then(()=> (console.log`Database connected...`))
 .catch(err =>console.log('Error' + err))
 
 //Sync to the database
 async function dbsync(){
-  await db.sync({alter:true})
+  await connect.sync({alter:true})
   console.log('Model was synchronized successfully')
 }
-dbsync()
+// dbsync()
 
 // app.use(bodyParser.json());
 // app.use(express.static('public'))
@@ -33,7 +31,7 @@ dbsync()
   
   
   
-  const userRouter = require('./controllers/userController')
+  // // const userRouter = require('./controllers/userController')
   
   //This route is so that you know when your route is working. Delete this route at then end of the project 
   app.get('/', (req, res) =>{
@@ -41,7 +39,7 @@ dbsync()
   })
   
   // Controllers
-  app.use('/user', userRouter)
+  app.use('/user', router)
   // app.use('/profile', userController)
 // app.use('/login', require ('./controllers/userController'))
 // app.use('/createaccount', userController)

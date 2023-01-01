@@ -7,7 +7,7 @@ CREATE TABLE user(
     firstname VARCHAR(50),
     lastname VARCHAR (50),
     email VARCHAR(100),
-    hashedPassword VARCHAR(100), 
+    passwordDigest VARCHAR(100), 
     
     shipId FOREIGN KEY,  
     paymentmethodId FOREIGN KEY,

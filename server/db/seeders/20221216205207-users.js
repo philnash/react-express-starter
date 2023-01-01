@@ -12,7 +12,7 @@ module.exports = {
           firstname: "Marlene",
           lastname: "Garvey",
           email: "email@email.com",
-          hashedPassword: "123456",
+          passwordDigest: "123456",
         },
         {
           userrole: "Admin",
@@ -20,7 +20,7 @@ module.exports = {
           firstname: "Crystal",
           lastname: "Korth",
           email: "crystal@email.com",
-          hashedPassword: "123456",
+          passwordDigest: "123456",
         },
         {
           userrole: "Admin",
@@ -28,21 +28,21 @@ module.exports = {
           firstname: "Tammy",
           lastname: "Swierczynski",
           email: "tammerz78@gmail.com",
-          hashedPassword: "123456",
+          passwordDigest: "123456",
         },
         {
           username: "customer1",
           firstname: "Cody",
           lastname: "Cork",
           email: "cody@email.com",
-          hashedPassword: "123456",
+          passwordDigest: "123456",
         },
         {
           username: "customer2",
           firstname: "Sam",
           lastname: "Hughes",
           email: "sam@email.com",
-          hashedPassword: "123456",
+          passwordDigest: "123456",
         },
       ],
       {}

@@ -31,7 +31,7 @@ module.exports = {
         isEmail: true,
         type: Sequelize.STRING
       },
-      hashedPassword: {
+      passwordDigest: {
         type: Sequelize.STRING,
         // the next line can be used to define the pw parameters. What do we want them to be? 
         // is: /^[a-z]+$/i

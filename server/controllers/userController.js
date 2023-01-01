@@ -1,12 +1,18 @@
 const express = require("express");
 const { Router } = express;
-const router = express.Router();
-const { users } = require("../db/models/user");
-const db = require("../config/database");
+const router = Router();
+// const { users } = require("../db/models/user");
+const Sequelize = require('sequelize')
+const sequelize = require('../config/database');
+
+const { User } = require("../db/models/user");
+// const { User } = require("../db/models/user", Sequelize.DataTypes, Sequelize.Model);
+// const { User } = db.user
 
 //Middleware
+const bcrypt = require('bcrypt')
+const jwt = require('json-web-token')
 // const { hashSync } = require ('bcrypt')
-// const bcrypt = require ('bcrypt')
 // const cookie = require('cookie')
 
 //Use this path to test your connection in Postman localhost:3001/user
@@ -25,7 +31,7 @@ router.get("/health", async (req, res) => {
 router.get("/users", async (req, res) => {
   try {
     // Use the findAll() function to fetch all users
-    const users = await users.findAll();
+    const users = await User.findAll();
     res.json(users);
   } catch (error) {
     res.status(500).json({ message: "Error getting users" });
@@ -33,40 +39,42 @@ router.get("/users", async (req, res) => {
 });
 
 //addUser
-router.post('/createuser', async (req, res) => {
-    // const hashedPassword = bcrypt.hashSync(password);
-    let { username, firstname, lastname, email, hashedPassword } = req.body;
-    db.user.findOne({ where: { email: email }, paranoid: false })
-        .then(find => {
-            if (find) {
-                throw new RequestError('Email is already in use', 409);
-            }
-            return db.user.create({
-                userrole: "Customer",
-                username: username,
-                firstname: firstname,
-                lastname: lastname,
-                email: email,
-                password: hashedPassword,
-            })
+router.post('/createuser', (req, res) => {
+    // const hashedpassword = bcrypt.hashSync(password);
+    // let { username, firstname, lastname, email, passwordDigest } = req.body;
+    // let passwordDigest = await bcrypt.hash(passwordDigest, 10);
 
-        })
-        .then(user => {
-            if (user) {
-                return res.status(400).json("Can't find your password");
-            }
-            else
-                res.status(500).json({ 'success': false });
-        })
-        .catch(err => {
-            console.log(err)
-            next(err);
-        })
+    // const user = 
+    User.create(req.body
+        // "userrole": "Customer",
+        // "username": username,
+        // "firstname": firstname,
+        // "lastname": lastname,
+        // "email": email,
+        // "passwordDigest": await bcrypt.hash(passwordDigest, 10)
+    )
+    // res.json(user)
+    .then(() => {
+        res.redirect("/products");
+      })
+      .catch((err) => {
+        if (err && err.name == "ValidationError") {
+          let message = "Validation Error: ";
+          for (var field in err.errors) {
+            message += `${field} was ${err.errors[field].value}. `;
+            message += `${err.errors[field].message}`;
+          }
+          console.log("Validation error message", message);
+          res.render("./createuser", { message });
+        } else {
+          res.render("error404");
+        }
+      });
 })
 
 //Find users
 router.get('/findusers', async (req, res) => {
-    db.users.findOne({ attributes: ["username", "firstname", "lastname"], where: { email: req.query.email }, paranoid: false })
+    User.findOne({ attributes: ["username", "firstname", "lastname"], where: { email: req.query.email }, paranoid: false })
         .then(users => {
             if (users) {
                 return res.status(200).json({ success: true, data: users });
@@ -83,61 +91,53 @@ router.get('/findusers', async (req, res) => {
 //Update user info
 router.put('/:id', async (req, res) => {
 
-    const { id, firstName, lastName, email,hashedPassword, } = req.body;
+    const { username, firstName, lastName, email, passwordDigest } = req.body;
     // let passwordHash = hashSync(password);
-    db.user.findOne({ where: { email: email }, paranoid: false })
-        .then(users => {
-            if (!users) {
-                throw new RequestError('User is not found', 409);
-            }
-            return db.users.update({
-                username: username ? username: users.username,
-                firstname : firstname ? firstname : users.firstname,
-                lastname: lastname ? lastname : users.lastname,
-                hashedPassword: hashedPassword ? hashedPassword : users.hashedPassword,
-            }, { where: { id: id } })
+    User.findOne({
+        where: { email : email }, paranoid: false
+    })
+    if (!User || !await bcrypt.compare(req.body.password, User.passwordDigest)) {
+        res.status(404).json({ message: `Could not find a User with the provided email and password` })
+        return User.update({
+            username: username ? username : User.username,
+            firstName: firstName ? firstName : User.firstName,
+            lastName: lastName ? lastName : User.lastName,
+            passwordDigest: passwordDigest ? passwordDigest : User.passwordDigest,
+        }, { where: { email: email } })
+    }
 
-        })
-        .then(users => {
-            if (users) {
-                return res.status(200).json({ success: true, msg: "User successsfully updated" });
-            }
-            else
-                res.status(500).json({ 'success': false });
-        })
-        .catch(err => {
-            console.log(err)
-            next(err);
-        })
 })
 
 // login in the user
 router.get('/login',async (req, res) => {
-const {username,hashedPassword}=req.body
-try{
-    const users = await users.findOne({username: username})
+    const {email,passwordDigest}=req.body
+    const foundUser = await User.findOne({email: email})
+    const validity = await foundUser.compare(passwordDigest, foundUser.passwordDigest) 
 
-    if(users)
-    {
-        const validity = await users.compare(hashedPassword, users.hashedPassword)
-
-        validity? res.status(200).json(loginUser):res.status(400)
+    if(foundUser){
+      
+        if (!foundUser || !await validity ) 
+            // bcrypt.compare(passwordDigest, user.passwordDigest)) 
+        {
+            res.status(404).json({ message: `Could not find a user with the provided username and password` })
+        } else {
+            const result = await jwt.encode(process.env.JWT_SECRET, { id: foundUser.id })           
+            res.json({ user: foundUser, token: result.value })
+            .then(products=> {
+                console.log(foundUser)
+                res.render(`./products`), {products}
+            })           
+        }
     }
-    else{
-        res.status(404).json("Non existant user")
-    }
-}catch(error){
-    res.status(500).json({error})
-}
 })
 
 //Delete user
-router.delete('/:userid', async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
     const id = Number(req.params.id)
-    db.users.findOne({ where: { id: id } })
+    User.findOne({ where: { id: id } })
         .then(data => {
             if (data) {
-                return db.users.destroy({ where: { id: id} }).then(r => [r, data])
+                return User.destroy({ where: { id: id} }).then(r => [r, data])
             }
             throw new RequestError('User is not found', 409)
         })
