@@ -8,26 +8,26 @@ module.exports = {
         autoIncrement: true,
         type: Sequelize.INTEGER
       },
-      userid: {
-        foreignKey: true,
-        type: Sequelize.INTEGER
-      },
-      productid: {
-        foreignKey: true, 
-        type: Sequelize.INTEGER
-      },
-      shipid: {
-        foreignKey: true, 
-        type: Sequelize.INTEGER
-      },
-      paymentmethodid: {
-        foreignKey: true, 
-        type: Sequelize.INTEGER
-      },
-      billingid: {
-        foreignKey: true, 
-        type: Sequelize.INTEGER
-      },
+      // userid: {
+      //   foreignKey: true,
+      //   type: Sequelize.INTEGER
+      // },
+      // productid: {
+      //   foreignKey: true, 
+      //   type: Sequelize.INTEGER
+      // },
+      // shipid: {
+      //   foreignKey: true, 
+      //   type: Sequelize.INTEGER
+      // },
+      // paymentmethodid: {
+      //   foreignKey: true, 
+      //   type: Sequelize.INTEGER
+      // },
+      // billingid: {
+      //   foreignKey: true, 
+      //   type: Sequelize.INTEGER
+      // },
       quantitypurchased: {
         type: Sequelize.INTEGER
       },

@@ -19,11 +19,11 @@ module.exports = (sequelize, Sequelize) => {
     // }
   }
   Payment_method.init({
-    id: {
-      primaryKey: true,
-      autoIncrement: true,
-      type: Sequelize.INTEGER
-    },
+    // id: {
+    //   primaryKey: true,
+    //   autoIncrement: true,
+    //   type: Sequelize.INTEGER
+    // },
     nameoncard: Sequelize.STRING,
     cardnumber: {
       type: Sequelize.INTEGER,

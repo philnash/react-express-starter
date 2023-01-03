@@ -18,15 +18,15 @@ module.exports = (sequelize, Sequelize) => {
     // }
   }
   Inventory.init({
-    product_id: {
-      primaryKey: true,
-      autoIncrement: true,
-      type: Sequelize.INTEGER
-    },
-    orderId: {
-      type: Sequelize.INTEGER,
-      foreignKey: true,
-    },
+    // product_id: {
+    //   primaryKey: true,
+    //   autoIncrement: true,
+    //   type: Sequelize.INTEGER
+    // },
+    // orderId: {
+    //   type: Sequelize.INTEGER,
+    //   foreignKey: true,
+    // },
     productname: {
       type: Sequelize.STRING,
       allowNull: false,

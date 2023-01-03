@@ -19,22 +19,14 @@ module.exports = (sequelize, Sequelize) => {
     }
   
   Shipping_address.init({
-    id: {
-      primaryKey: true,
-      autoIncrement: true,
-      type: Sequelize.INTEGER
-    },
+    // id: {
+    //   primaryKey: true,
+    //   autoIncrement: true,
+    //   type: Sequelize.INTEGER
+    // },
     fullname: {
       allowNull: true,
       type: Sequelize.STRING
-    },
-    createdAt: {
-      allowNull: false,
-      type: Sequelize.DATE
-    },
-    updatedAt: {
-      allowNull: false,
-      type: Sequelize.DATE
     },
     country: {
       type: Sequelize.STRING,
