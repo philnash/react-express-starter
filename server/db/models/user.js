@@ -6,8 +6,12 @@
 // const payment_method = require("./payment_method");
 
 //Model
-module.export = (sequelize, DataTypes, Model) => {
-    class User extends Model {
+const {
+  Model 
+} = require('sequelize');
+
+module.exports = (sequelize, Sequelize) => {
+  class User extends Model {
     // static associate(
     //   { order, shipping_address, payment_method, billing }) {
     //   User.hasMany(shipping_address, { as: "shipid", foreignKey: "id" });
@@ -18,25 +22,26 @@ module.export = (sequelize, DataTypes, Model) => {
     //   User.hasMany(order, { as: "orderid", foreignKey: "id" });
     //   User.hasMany(billing, { as: "billingid", foreignKey: "id" }
     // )
-    }
+  }
 
-    User.init(
+  User.init(
     {
-      userrole: DataTypes.STRING,
-      username: DataTypes.STRING,
-      firstname: DataTypes.STRING,
-      lastname: DataTypes.STRING,
-      email: DataTypes.STRING,
+      // uuid: Sequelize.STRING,
+      userrole: Sequelize.STRING,
+      username: Sequelize.STRING,
+      firstname: Sequelize.STRING,
+      lastname: Sequelize.STRING,
+      email: Sequelize.STRING,
       passwordDigest: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
       },
-    },  {
+    },
+    {
       sequelize,
-      modelName: "User",
+      modelName: 'user',
       // tableName: "users",
       timestamps: false,
     }
-    );
+  );
   return User;
-  // };
 };

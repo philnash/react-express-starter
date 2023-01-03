@@ -1,7 +1,9 @@
 import * as React from "react";
 import { Component } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "../src/css/scss/main.css";
 import "../src/css/scss/main.css.map";
+
 import Navigation from "./components/Navbar.jsx";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
@@ -14,7 +16,6 @@ import Error404 from "./Error404";
 import Login from "./components/Login";
 import CreateUserForm from "./components/CreateUserForm";
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import bodyParser from "body-parser";
 
 // import CurrentUserProvider from './contexts/CurrentUser'

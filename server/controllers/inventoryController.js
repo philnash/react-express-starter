@@ -1,18 +1,16 @@
-const db = require('../config/database')
+const connect = require('../db/config/database')
 const inventoryRouter = require('express').Router()
 
-// const { inventory } = db
-
 inventoryRouter.get('/', async(res, req) => {
-    const productid = Number(req.params.productid) 
-    db.productid.findAll({ where: { productid: productid } })
+    const produce_id = Number(req.params.produce_id) 
+    connect.produce_id.findAll({ where: { produce_id: produce_id } })
 })
 
 inventoryRouter.put('/', async(res, req) => {
     
-    const { productid } = req.body;
+    const { produce_id } = req.body;
   
-    db.productid.findOne({ where: {productid: productid  }, paranoid: false })
-        db.productid.update({
+    connect.produce_id.findOne({ where: {produce_id: produce_id  }, paranoid: false })
+        connect.produce_id.update({
                 
-            }, { where: { productid: productid} })})
+            }, { where: { produce_id: produce_id} })})

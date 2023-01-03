@@ -1,6 +1,6 @@
 import Products from "../components/Products";
 import ShoppingCart from "../components/ShoppingCart";
-import { configureStore } from "redux";
+// import { configureStore } from "redux";
 
 function ProductsPage() {
   return (

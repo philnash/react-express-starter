@@ -37,7 +37,7 @@ function Login() {
           <Form.Control
             type="email"
             useref="email"
-            value={email}
+            value={setEmail}
             onChange={(event) => setEmail(event.target.value)}
             placeholder="Enter your email address"
             />
@@ -47,7 +47,7 @@ function Login() {
           <Form.Control
             type="password"
             useref="passwordDigest"
-            value={passwordDigest}
+            value={setPassword}
             onChange={(event) => setPassword(event.target.value)}
             placeholder="Password"
             autoComplete="current-password"
