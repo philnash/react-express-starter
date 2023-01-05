@@ -3,9 +3,6 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
 const CreateUserForm = () => {
-//  const createuser = {username:"df username", email:"df email", firstname:"df first", lastname:"df last", passwordDigest: "df pw"}
-//   let username, email, firstname, lastname, passwordDigest;
-
   const [username, setusername] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -13,6 +10,7 @@ const CreateUserForm = () => {
   const [passwordDigest, setPassword] = useState("");
 
   const handleSubmit = (event) => {
+    // handleSubmit(async (data) => await fetchAPI(data))
     event.preventDefault();
     // Send the form data to the server using an HTTP request
   };
@@ -26,10 +24,8 @@ const CreateUserForm = () => {
           <Form.Label   htmlFor="username" >Username </Form.Label>
           <Form.Control
             input="username"
-            id="username"
             type="text"
             value={username}
-            ref="username"
             useref="username"
             name="username"
             onChange={(event) => setusername(event.target.value)}
@@ -42,9 +38,7 @@ const CreateUserForm = () => {
           <Form.Control
             type="text"
             useref="firstname"
-            ref="firstname"
             value={firstname}
-            id="firstname"
             onChange={(event) => setFirstname(event.target.value)}
             placeholder="First Name"
             />
@@ -53,10 +47,8 @@ const CreateUserForm = () => {
           <Form.Label   htmlFor="lastname" >Last Name </Form.Label>
           <Form.Control
             type="text"
-            ref="lastname"
             useref="lastname"
             value={lastname}
-            id="lastname"
             onChange={(event) => setLastname(event.target.value)}
             placeholder="Last Name"
             />
@@ -66,9 +58,7 @@ const CreateUserForm = () => {
           <Form.Control
             type="email"
             value={email}
-            ref="email"
             useref="email"
-            id="email"
             onChange={(event) => setEmail(event.target.value)}
             placeholder="Enter email"
             autoComplete="email"
@@ -84,17 +74,15 @@ const CreateUserForm = () => {
           >Password</Form.Label>
           <Form.Control
             type="text"
-            ref="passwordDigest"
             useref="passwordDigest"
             value={passwordDigest}
             autoComplete="current-password"
-            id="passwordDigest"
-            // onChange={(event) => setPassword(event.target.value)}
+            onChange={(event) => setPassword(event.target.value)}
             placeholder="Choose a password"
             aria-describedby="passwordHelpBlock"
           />
           <Form.Text 
-          // id="passwordHelpBlock" 
+          id="passwordHelpBlock" 
           muted>
             Your password must be 8-20 characters long, contain letters and
             numbers, and must not contain spaces, special characters, or emoji.

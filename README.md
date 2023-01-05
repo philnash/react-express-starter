@@ -80,11 +80,26 @@ REACT_APP_SERVER_URL=http://localhost/3000/
    Run both applications together with the command: npm run dev
 
    The React application will run on port 3000 and the server port 3001.
-8. Add the tables to your database. From the server folder, run sequelize db:migrate:all
-        *If there are errors, to undo migration run npx sequelize-cli db:migrate:undo:all 
-9. Add the seed data run npx sequelize-cli db:seed:all
-                *If there are problems, undo the seed with the command npx sequelize-cli db:seed:undo
-                *to undo only a specific seed use the command npx sequelize-cli db:seed:undo --seed name-of-seed-as-in-data
+8. Add the tables to your database. From the server folder, run:
+
+         npx sequelize-cli db:migrate
+        
+        *If there are errors, to undo migration run:
+        
+         npx sequelize-cli db:migrate:undo:all 
+
+9. Add the seed data run: 
+
+        npx sequelize-cli db:seed
+        
+        *If there are problems, undo the seed with the command:
+        
+         npx sequelize-cli db:seed:undo
+        
+        *to undo only a specific seed use the command: 
+        
+        npx sequelize-cli db:seed:undo --seed name-of-seed-as-in-data
+
 10. Open the Postman app and check your routes: 
         a. localhost:3001 should res: Hello, Firestarters
         b. .../user should res: userRouter is working

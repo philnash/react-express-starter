@@ -1,13 +1,8 @@
+require("dotenv").config();
 const router = require("express").Router();
-const Sequelize = require("sequelize");
 
-const {
-  User,
-} = require("../db/models/user", Sequelize.DataTypes);
-
-const connect = require("../db/config/database");
-
-const { db } = require("sequelize");
+// this is the connection to the database
+const pool = require("../db")
 
 //Middleware
 const bcrypt = require("bcrypt");
@@ -25,82 +20,64 @@ router.get("/health", async (req, res) => {
   res.send({
     statusCode: 200,
     message: "router is healthy",
-    // res.json(users);
   });
 });
 
-router.get("/users", async (req, res) => {
+// The below route is working 1/5/23 TS
+router.get("/:id", async (req, res) => {
   try {
-    // Use the findAll() function to fetch all users
-    const users = await connect.db.User.findAll();
-    res.json(users);
-    console.log(typeof users);
-  } catch (error) {
-    res.status(500).json({ message: "Error getting users" });
+    const { id } = req.params;
+    const user = await pool.query("SELECT * FROM users WHERE user_id = $1", [
+      id,
+    ]);
+    res.json(user.rows[0]);
+    console.log(`user.rows[0] = ${user.rows[0]}`);
+  } catch (err) {
+    console.error(`user/:id err.message = ${err.message}`);
   }
 });
 
-//addUser
-router.post("/createuser", (req, res) => {
+//addUser // This is working but we need to add password auth to it
+router.post("/createuser", async (req, res) => {
   // const hashedpassword = bcrypt.hashSync(password);
-  const { username, firstname, lastname, email, passwordDigest } = req.body;
-  console.log(typeof req.body);
+ 
   // let passwordDigest = await bcrypt.hash(passwordDigest, 10);
 
-  // const user =
-  const user = User.create(
-    {
-      userrole: "Customer",
-      username: username,
-      firstname: firstname,
-      lastname: lastname,
-      email: email,
-      passwordDigest: passwordDigest,
-      // await bcrypt.hash(passwordDigest, 10)
-    },
-    {
-      fields: ["username", "firstname", "lastname", "email", "passwordDigenst"],
-    }
-  );
-  res
-    .json(user)
-    .then(() => {
-      res.redirect("/products");
-    })
-    .catch((err) => {
-      if (err && err.name == "ValidationError") {
-        let message = "Validation Error: ";
-        for (var field in err.errors) {
-          message += `${field} was ${err.errors[field].value}. `;
-          message += `${err.errors[field].message}`;
-        }
-        console.log("Validation error message", message);
-        res.render("./createuser", { message });
-      } else {
-        res.render("error404");
-      }
-    });
-});
+  try {
+    // Input from form should be in JSON format with double quotes
+    const { username, firstname, lastname, email, passwordDigest } = req.body;
+    await pool.query(
+      `INSERT INTO users (username, firstname, lastname, email, "passwordDigest") VALUES($1, $2, $3, $4, $5)`,
+      [username, firstname, lastname, email, passwordDigest]
+    );
+    res.json("New user created");
+    // res.redirect("/products");
+  } catch(err) {
+    console.error(err.message + "error creating new user");
+    // res.render("error404");
+      // if (err && err.name == "ValidationError") {
+        // let message = "Validation Error: ";
+        // for (var field in err.errors) {
+          // message += `${field} was ${err.errors[field].value}. `;
+          // message += `${err.errors[field].message}`;
+        // console.log("Validation error message", message);
+        // res.render("./createuser", { message });
+      // } else {
+      // }
+  }});
 
-//Find users
+//Find all users //not working
 router.get("/findusers", async (req, res) => {
-  User.findOne({
-    attributes: ["username", "firstname", "lastname"],
-    where: { email: req.query.email },
-    paranoid: false,
-  })
-    .then((users) => {
-      if (users) {
-        return res.status(200).json({ success: true, data: users });
-      } else res.status(500).json({ success: false });
-    })
-    .catch((err) => {
-      console.log(err);
-      next(err);
-    });
+  try {
+    const allUsers = await pool.query("SELECT * FROM users");
+    res.json(allUsers);
+    console.log(`allUsers = ${allUsers}`);
+  } catch (err) {
+    console.error(err.message);
+  }
 });
 
-//Update user info
+//Update user info  //not working not updated
 router.put("/:id", async (req, res) => {
   const { username, firstName, lastName, email, passwordDigest } = req.body;
   // let passwordHash = hashSync(password);
@@ -129,7 +106,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// login in the user
+// login in the user // not working not updated
 router.get("/login", async (req, res) => {
   const { email, passwordDigest } = req.body;
   const foundUser = await User.findOne({ email: email });
@@ -158,7 +135,7 @@ router.get("/login", async (req, res) => {
   }
 });
 
-//Delete user
+//Delete user not working not updated
 router.delete("/:id", async (req, res, next) => {
   const id = Number(req.params.id);
   User.findOne({ where: { id: id } })
