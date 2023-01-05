@@ -14,9 +14,9 @@ db.shipping_address = require("./shipping_address")
 db.inventory = require("./inventory")
 
 // //Testing the connection to the db
-sequelize 
-  .authenticate()
-  .then(() => console.log`Database connected with PG_URI at Models/index.js...`)
-  .catch((err) => console.log("Error" + err));
+// sequelize 
+//   .authenticate()
+//   .then(() => console.log`Database connected with PG_URI at Models/index.js...`)
+//   .catch((err) => console.log("Error" + err));
 
 module.exports = db;

@@ -2,39 +2,80 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 
-const db = require('./db/models')
-// this is the connection to the database using pguri
-// const connect = require("./db/config/database");
-
+// this is the connection to the database
+const pool = require("./db")
 
 //Middleware
 const cors = require('cors');
-const bodyParser = require('body-parser');
-const pino = require("express-pino-logger")();
+
+// const pino = require("express-pino-logger")();
 const userRouter = require("./controllers/userController");
-var corsOptions={
-  origin:"http://localhost:3000" //this is the BE Server. may need to change
-}
 
-// Syncing the database
-db.sequelize.sync({})
-  .then(() => {
-    console.log("Firestarter database is synced from server.js");
-  })
-  .catch((err) => {
-    console.log("Database is not synced: " + err.message);
-  });
-
+app.use(cors())
 app.use(express.json());
-// app.use(express.static('public'))
-app.use(express.urlencoded(
-  { extended: true }
-  ))
-app.use(cors(corsOptions))
 
-//This route is so that you know when your route is working. Delete this route at then end of the project
+// Test route. Delete at the end of the project
 app.get("/", (req, res) => {
   res.send("Hello, Firestarters");
+});
+
+// Create a user // This is working
+app.post("/users", async (req, res) => {
+  try {
+    // Input as JSON with double quotes
+    const { username, firstname, lastname, email, passwordDigest} = req.body;
+    const newUser = await pool.query(
+      `INSERT INTO users (username, firstname, lastname, email, "passwordDigest") VALUES($1, $2, $3, $4, $5)`,
+      [username, firstname, lastname, email, passwordDigest]
+    );
+
+    res.json("New user created");
+  } catch (err) {
+    console.error(err.message + "error creating new user");
+  }
+});
+
+// Get one user by id // this is working
+app.get("/user/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await pool.query("SELECT * FROM users WHERE user_id = $1", [
+      id
+    ]);
+
+    res.json(user.rows[0]);
+    console.log(`user.rows[0] = ${user.rows[0]}`)
+  } catch (err) {
+    console.error(`user/:id err.message = ${err.message}`);
+  }
+});
+
+//Get all users // This is working; console.log = key/value as objects
+app.get("/users", async (req, res) => {
+  try {
+
+    const allUsers = await pool.query("SELECT * FROM users");
+    
+    res.json(allUsers.rows);
+
+    console.log(`allUsers = ${allUsers.rows}`)
+  
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+// Delete a user // this is working
+app.delete("/user/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleteUser = await pool.query("DELETE FROM users WHERE user_id = $1", [
+      id
+    ]);
+    res.json("User was deleted!");
+  } catch (err) {
+    console.log(err.message);
+  }
 });
 
 // Controllers

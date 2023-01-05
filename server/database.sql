@@ -1,7 +1,7 @@
 CREATE DATABASE firestarter;
 
 CREATE TABLE user(
-    id VARCHAR(100) PRIMARY KEY,
+    user_id VARCHAR(100) PRIMARY KEY,
     userrole VARCHAR(25),
     username VARCHAR(50),
     firstname VARCHAR(50),

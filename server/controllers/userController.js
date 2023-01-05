@@ -6,10 +6,8 @@ const {
 } = require("../db/models/user", Sequelize.DataTypes);
 
 const connect = require("../db/config/database");
-// const { DataTypes, Model } = require(Sequelize)
 
 const { db } = require("sequelize");
-// const { User } = db.user
 
 //Middleware
 const bcrypt = require("bcrypt");

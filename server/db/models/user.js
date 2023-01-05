@@ -26,6 +26,7 @@ module.exports = (sequelize, Sequelize) => {
 
   User.init(
     {
+      user_id: Sequelize.STRING,
       // uuid: Sequelize.STRING,
       userrole: Sequelize.STRING,
       username: Sequelize.STRING,
@@ -39,7 +40,7 @@ module.exports = (sequelize, Sequelize) => {
     {
       sequelize,
       modelName: 'user',
-      // tableName: "users",
+      tableName: "users",
       timestamps: false,
     }
   );

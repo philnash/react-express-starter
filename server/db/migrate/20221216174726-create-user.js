@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('users', {
-      id: {
+      user_id: {
         primaryKey: true,
         autoIncrement: true,
         type: Sequelize.INTEGER
@@ -31,8 +31,8 @@ module.exports = {
         isEmail: true,
         type: Sequelize.STRING
       },
-      passwordDigest: {
-        type: Sequelize.STRING,
+      passwordDigest: {  //pgAdmin will not let us usethe word password in our column name
+        type: Sequelize.STRING
         // the next line can be used to define the pw parameters. What do we want them to be? 
         // is: /^[a-z]+$/i
       },

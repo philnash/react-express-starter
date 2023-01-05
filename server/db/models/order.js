@@ -66,15 +66,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.DATE,
       allowNull: true
     },
-    createdAt: {
-      allowNull: false,
-      type: Sequelize.DATE
-    },
-    updatedAt: {
-      allowNull: false,
-      type: Sequelize.NOW
-    }
-  }, {
+      }, {
     sequelize,
     modelName: 'order',
     tableName: 'orders'
